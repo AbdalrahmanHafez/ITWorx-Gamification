@@ -11,6 +11,7 @@ export default function App() {
     <>
       <div
         style={{
+          // backgroundColor: "gray",
           backgroundImage: `url(${background})`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "100% auto"

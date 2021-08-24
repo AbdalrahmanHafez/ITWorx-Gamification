@@ -45,7 +45,7 @@ nav {
   width: auto;
 }
 
-.carousel-control-prev-icon,
+/* .carousel-control-prev-icon,
 .carousel-control-next-icon {
   height: 100px;
   width: 100px;
@@ -53,9 +53,9 @@ nav {
   background-size: 100%, 100%;
 
   background-image: none;
-}
+} */
 
-.carousel-control-next-icon:after {
+/* .carousel-control-next-icon:after {
   content: ">";
   font-size: 55px;
   color: black;
@@ -65,4 +65,11 @@ nav {
   content: "<";
   font-size: 55px;
   color: black;
+} */
+
+span.carousel-control-next-icon {
+  background-color: #000000;
+}
+span.carousel-control-prev-icon {
+  background-color: #000000;
 }

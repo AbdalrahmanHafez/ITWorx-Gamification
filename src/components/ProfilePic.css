@@ -1,5 +1,5 @@
 .Profile-Contailer {
-  border: 2px solid black;
+  /* border: 2px solid black; */
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
