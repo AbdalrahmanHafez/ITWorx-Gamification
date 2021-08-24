@@ -1,17 +1,23 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { NavDropdown } from "react-bootstrap";
+import ProfilePic from "./ProfilePic";
+
+const profile_pic = require("../../Images/profile_pic.png");
 
 const Navbar = () => {
   return (
     <div>
       <nav id="navB" class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <img
-            class="Logo"
-            src={require("../../Images/ITWorx_logo.png")}
-            alt="ITWorx Logo"
-          />
+          <a href="/">
+            <img
+              class="Logo"
+              src={require("../../Images/ITWorx_logo.png")}
+              alt="ITWorx Logo"
+            />
+          </a>
+
           <div className="rectangle w-100">
             <button
               class="navbar-toggler"
@@ -25,73 +31,61 @@ const Navbar = () => {
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              {/* <ul class="navbar-nav me-auto mb-2 mb-lg-0">  */}
+              <ul class="navbar-nav nav-left">
+                <NavDropdown
+                  id="nav-dropdown-dark-example"
+                  title="Activities"
+                  menuVariant="dark"
+                >
+                  <NavDropdown.Item href="#action/3.2">
+                    All Activities
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.3">
+                    New Activities
+                  </NavDropdown.Item>
+
+                  <NavDropdown.Item href="#action/3.4">
+                    Your Activities
+                  </NavDropdown.Item>
+                </NavDropdown>
+
                 <li class="nav-item">
                   <a class="nav-link active test" aria-current="page" href="#">
-                    Home
+                    Department
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active test" aria-current="page" href="#">
+                    Practice
                   </a>
                 </li>
                 <NavDropdown
                   id="nav-dropdown-dark-example"
-                  title="Dropdown"
+                  title="Leader Board"
                   menuVariant="dark"
                 >
-                  <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.2">
-                    Another action
+                    Department Leader Board
                   </NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.3">
-                    Something
+                    Practice Leader Board
                   </NavDropdown.Item>
-                  <NavDropdown.Divider />
+
                   <NavDropdown.Item href="#action/3.4">
-                    Separated link
+                    All Leader Board
                   </NavDropdown.Item>
                 </NavDropdown>
-
-                <NavDropdown
-                  id="nav-dropdown-dark-example"
-                  title="Dropdown"
-                  menuVariant="dark"
-                >
-                  <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">
-                    Another action
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.3">
-                    Something
-                  </NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action/3.4">
-                    Separated link
-                  </NavDropdown.Item>
-                </NavDropdown>
-
                 <li class="nav-item">
-                  <a
-                    class="nav-link disabled"
-                    href="#"
-                    tabindex="-1"
-                    aria-disabled="true"
-                  >
-                    Disabled
+                  <a class="nav-link active test" aria-current="page" href="#">
+                    Badges
                   </a>
                 </li>
               </ul>
             </div>
           </div>
-          <form class="d-flex">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button class="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form>
         </div>
+        <ProfilePic />
       </nav>
     </div>
   );

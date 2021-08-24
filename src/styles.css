@@ -3,7 +3,7 @@
   text-align: center;
 }
 body {
-  background-image: url("../Images/bulding_bg_smaller.png");
+  background-image: url("../Images/bulding_bg_smaller.png") !important;
 }
 
 .Logo {
@@ -29,6 +29,40 @@ body {
   color: white !important;
 }
 
-.test {
-  padding-left: 1.5rem !important;
+.nav-left {
+  /*margin-right: 100px;
+  margin-left: 50px;*/
+  padding-left: 2rem !important;
+  padding-right: 3rem !important;
+}
+
+nav {
+  filter: drop-shadow(0 0 0.2rem #000000);
+}
+
+.Slideshow {
+  height: 1500px;
+  width: auto;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  height: 100px;
+  width: 100px;
+  outline: black;
+  background-size: 100%, 100%;
+
+  background-image: none;
+}
+
+.carousel-control-next-icon:after {
+  content: ">";
+  font-size: 55px;
+  color: black;
+}
+
+.carousel-control-prev-icon:after {
+  content: "<";
+  font-size: 55px;
+  color: black;
 }
