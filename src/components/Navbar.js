@@ -8,7 +8,10 @@ const profile_pic = require("../../Images/profile_pic.png");
 const Navbar = () => {
   return (
     <div>
-      <nav id="navB" class="navbar navbar-expand-lg navbar-light bg-light">
+      <nav
+        id="navB"
+        class="navbar sticky-top navbar-expand-lg navbar-light bg-light"
+      >
         <div class="container-fluid">
           <a href="/">
             <img
@@ -38,14 +41,14 @@ const Navbar = () => {
                   title="Activities"
                   menuVariant="dark"
                 >
-                  <NavDropdown.Item href="#action/3.2">
+                  <NavDropdown.Item href="/AllActivities">
                     All Activities
                   </NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.3">
+                  <NavDropdown.Item href="/NewActivities">
                     New Activities
                   </NavDropdown.Item>
 
-                  <NavDropdown.Item href="#action/3.4">
+                  <NavDropdown.Item href="/YourActivities">
                     Your Activities
                   </NavDropdown.Item>
                 </NavDropdown>

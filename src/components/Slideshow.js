@@ -8,7 +8,7 @@ const Slideshow = () => {
       className="Slideshow"
       style={{ display: "block", width: "auto", hight: "auto", padding: 30 }}
     >
-      <Carousel variant="dark" pause="hover">
+      <Carousel variant="dark" pause="hover" nextLabel="" prevLabel="">
         <Carousel.Item>
           <br />
           <br />
