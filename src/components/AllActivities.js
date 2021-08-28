@@ -1,6 +1,7 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import "bootstrap/dist/css/bootstrap.min.css";
+import ActivitieService from "../services/ActivityService";
 
 const AllActivities = () => {
   const handleSearch = (event) => {
@@ -35,26 +36,29 @@ const AllActivities = () => {
       //   }`
     }
   ];
+  const [rows, setRows] = useState([]);
 
-  const rows = [
-    {
-      id: 1,
-      name: "interview",
-      description: "Snow",
-      points: 35,
-      moreinfo: "someText"
-    },
-    {
-      id: 2,
-      name: "interviewwwwwwwwwwwwwwwwwwwwww",
-      description: "Snow Snow Snow Snow",
-      points: 35
-    },
-    { id: 3, name: "interview", description: "Snow", points: 35 },
-    { id: 4, name: "interview", description: "Snow", points: 35 },
-    { id: 5, name: "interview", description: "Snow", points: 35 },
-    { id: 6, name: "interview", description: "Snow", points: 35 }
-  ];
+  useEffect(() => {
+    const getAllActivities = () => {
+      ActivitieService.getAll().then((res) => {
+        // console.log(res.data);
+        const result = res.data.map((obj, i) => ({
+          id: i,
+          name: obj.name,
+          description: obj.description,
+          points: obj.totalPoints,
+          moreinfo: "moreinfo"
+        }));
+        console.log("result", result);
+        // setRows([]);
+        setRows(result);
+        // return rows;
+      });
+    };
+    getAllActivities();
+  }, []);
+  // const rows = [getAllActivities()];
+  // { id: 3, name: "interview", description: "Snow", points: 35 , moreinfo: "someText"},
 
   return (
     <>
@@ -89,7 +93,7 @@ const AllActivities = () => {
                 <DataGrid
                   rows={rows}
                   columns={columns}
-                  pageSize={5}
+                  pageSize={3}
                   disableSelectionOnClick
                 />
               </div>
