@@ -113,15 +113,16 @@ const Navbar = () => {
                 Department
                 Leader
                 Board
-                src={require("../../Images/ITWorx_logo.png")}
+                src={profile_pic}
                 alt="user pic"
               />
-
-              {user.username}
+              "cecece"
             </div>
           }
         >
-          <NavDropdown.Item href="/LeaderBoardDepartment"></NavDropdown.Item>
+          <NavDropdown.Item href="/LeaderBoardDepartment">
+            SignOut
+          </NavDropdown.Item>
         </NavDropdown>
       </nav>
     </div>
