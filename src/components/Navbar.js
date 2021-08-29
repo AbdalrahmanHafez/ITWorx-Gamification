@@ -1,6 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { NavDropdown } from "react-bootstrap";
+import { NavDropdown, MenuItem } from "react-bootstrap";
 import ProfilePic from "./ProfilePic";
 
 const profile_pic = require("../../Images/profile_pic.png");
@@ -54,12 +54,21 @@ const Navbar = () => {
                 </NavDropdown>
 
                 <li class="nav-item">
-                  <a class="nav-link active test" aria-current="page" href="#">
+                  <a
+                    class="nav-link active test"
+                    aria-current="page"
+                    href="/Department"
+                  >
                     Department
                   </a>
                 </li>
+
                 <li class="nav-item">
-                  <a class="nav-link active test" aria-current="page" href="#">
+                  <a
+                    class="nav-link active test"
+                    aria-current="page"
+                    href="/Practice"
+                  >
                     Practice
                   </a>
                 </li>
@@ -68,19 +77,23 @@ const Navbar = () => {
                   title="Leader Board"
                   menuVariant="dark"
                 >
-                  <NavDropdown.Item href="#action/3.2">
+                  <NavDropdown.Item href="/LeaderBoardDepartment">
                     Department Leader Board
                   </NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.3">
+                  <NavDropdown.Item href="/LeaderBoardPractice">
                     Practice Leader Board
                   </NavDropdown.Item>
 
-                  <NavDropdown.Item href="#action/3.4">
+                  <NavDropdown.Item href="/LeaderBoardAll">
                     All Leader Board
                   </NavDropdown.Item>
                 </NavDropdown>
                 <li class="nav-item">
-                  <a class="nav-link active test" aria-current="page" href="#">
+                  <a
+                    class="nav-link active test"
+                    aria-current="page"
+                    href="/Badges"
+                  >
                     Badges
                   </a>
                 </li>
@@ -89,6 +102,28 @@ const Navbar = () => {
           </div>
         </div>
         <ProfilePic />
+
+        <NavDropdown
+          id="nav-dropdown-dark-example"
+          menuVariant="dark"
+          title={
+            <div className="pull-left">
+              <img
+                className="thumbnail-image"
+                Department
+                Leader
+                Board
+                src={profile_pic}
+                alt="user pic"
+              />
+              "cecece"
+            </div>
+          }
+        >
+          <NavDropdown.Item href="/LeaderBoardDepartment">
+            SignOut
+          </NavDropdown.Item>
+        </NavDropdown>
       </nav>
     </div>
   );

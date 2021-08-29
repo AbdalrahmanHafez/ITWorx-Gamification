@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import ActivitieService from "../services/ActivityService";
 import Table from "../components/Table";
 
-const AllActivities = () => {
+const LeaderBoardDepartment = () => {
   const handleSearch = (event) => {
     const value = event.target.value;
     console.log(value);
@@ -56,7 +56,9 @@ const AllActivities = () => {
     // };
     // return getAllActivities;
   };
-  return <Table name="All Activities" columns={columns} onMount={setRows} />;
+  return (
+    <Table name="Leader Board Department" columns={columns} onMount={setRows} />
+  );
 };
 
-export default AllActivities;
+export default LeaderBoardDepartment;

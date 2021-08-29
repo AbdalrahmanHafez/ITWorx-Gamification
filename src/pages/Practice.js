@@ -56,7 +56,7 @@ const AllActivities = () => {
     // };
     // return getAllActivities;
   };
-  return <Table name="All Activities" columns={columns} onMount={setRows} />;
+  return <h1>This is Practice</h1>;
 };
 
 export default AllActivities;

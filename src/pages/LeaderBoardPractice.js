@@ -56,7 +56,9 @@ const AllActivities = () => {
     // };
     // return getAllActivities;
   };
-  return <Table name="All Activities" columns={columns} onMount={setRows} />;
+  return (
+    <Table name="Leader Board Practice" columns={columns} onMount={setRows} />
+  );
 };
 
 export default AllActivities;
