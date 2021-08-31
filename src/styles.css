@@ -3,7 +3,7 @@
   text-align: center;
 }
 body {
-  background-image: url("../Images/bulding_bg_smaller.png") !important;
+  background-image: url("./Images/bulding_bg_smaller.png") !important;
 }
 
 .Logo {
@@ -72,4 +72,16 @@ span.carousel-control-next-icon {
 }
 span.carousel-control-prev-icon {
   background-color: #000000;
+}
+
+.grid-container {
+  display: grid;
+}
+
+.grid-container--fill {
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+}
+
+.grid-container--fit {
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
 }

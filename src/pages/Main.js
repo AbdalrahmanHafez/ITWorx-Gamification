@@ -6,12 +6,13 @@ import AllActivities from "./AllActivities";
 import NewActivities from "./NewActivities";
 import YourActivities from "./YourActivities";
 
-import Department from "./Department";
+import Departments from "./Departments";
 import Practice from "./Practice";
 import LeaderBoardAll from "./LeaderBoardAll";
 import LeaderBoardDepartment from "./LeaderBoardDepartment";
 import LeaderBoardPractice from "./LeaderBoardPractice";
 import Badges from "./Badges";
+import TestPage from "./TestPage";
 
 const Main = () => {
   return (
@@ -22,7 +23,7 @@ const Main = () => {
       <Route exact path="/NewActivities" component={NewActivities}></Route>
       <Route exact path="/YourActivities" component={YourActivities}></Route>
 
-      <Route exact path="/Department" component={Department}></Route>
+      <Route exact path="/Departments" component={Departments}></Route>
       <Route exact path="/Practice" component={Practice}></Route>
       <Route
         exact
@@ -37,6 +38,8 @@ const Main = () => {
       <Route exact path="/LeaderBoardAll" component={LeaderBoardAll}></Route>
 
       <Route exact path="/Badges" component={Badges}></Route>
+
+      <Route exact path="/TestPage" component={TestPage}></Route>
     </Switch>
   );
 };

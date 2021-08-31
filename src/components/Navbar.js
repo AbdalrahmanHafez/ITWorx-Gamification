@@ -3,7 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { NavDropdown, MenuItem } from "react-bootstrap";
 import ProfilePic from "./ProfilePic";
 
-const profile_pic = require("../../Images/profile_pic.png");
+import profile_pic from "../Images/profile_pic.png";
+import ITWorx_logo from "../Images/ITWorx_logo.png";
 
 const Navbar = () => {
   return (
@@ -14,11 +15,7 @@ const Navbar = () => {
       >
         <div class="container-fluid">
           <a href="/">
-            <img
-              class="Logo"
-              src={require("../../Images/ITWorx_logo.png")}
-              alt="ITWorx Logo"
-            />
+            <img class="Logo" src={ITWorx_logo} alt="ITWorx Logo" />
           </a>
 
           <div className="rectangle w-100">
@@ -57,7 +54,7 @@ const Navbar = () => {
                   <a
                     class="nav-link active test"
                     aria-current="page"
-                    href="/Department"
+                    href="/Departments"
                   >
                     Department
                   </a>
@@ -102,28 +99,7 @@ const Navbar = () => {
           </div>
         </div>
         <ProfilePic />
-
-        <NavDropdown
-          id="nav-dropdown-dark-example"
-          menuVariant="dark"
-          title={
-            <div className="pull-left">
-              <img
-                className="thumbnail-image"
-                Department
-                Leader
-                Board
-                src={profile_pic}
-                alt="user pic"
-              />
-              "cecece"
-            </div>
-          }
-        >
-          <NavDropdown.Item href="/LeaderBoardDepartment">
-            SignOut
-          </NavDropdown.Item>
-        </NavDropdown>
+        <span>practice name</span>
       </nav>
     </div>
   );

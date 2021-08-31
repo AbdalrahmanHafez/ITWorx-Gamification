@@ -13,29 +13,29 @@ const AllActivities = () => {
     {
       field: "name",
       headerName: "Name",
-      width: 225
+      width: 225,
     },
     {
       field: "description",
       headerName: "Description",
-      width: 500
+      width: 500,
     },
     {
       field: "points",
       headerName: "Points",
-      width: 120
+      width: 120,
     },
     {
       field: "moreinfo",
       headerName: "More Info",
       description: "This column has a value getter and is not sortable.",
       sortable: false,
-      width: 125
+      width: 125,
       // valueGetter: (params) =>
       //   `${params.getValue(params.id, "firstName") || ""} ${
       //     params.getValue(params.id, "lastName") || ""
       //   }`
-    }
+    },
   ];
 
   const setRows = async () => {
@@ -47,7 +47,7 @@ const AllActivities = () => {
         name: obj.name,
         description: obj.description,
         points: obj.totalPoints,
-        moreinfo: "moreinfo"
+        moreinfo: "moreinfo",
       }));
       console.log("result", result);
       // setRows([]);

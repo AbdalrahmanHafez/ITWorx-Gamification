@@ -2,7 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./ProfilePic.css";
 
-const profile_pic = require("../../Images/profile_pic.png");
+import profile_pic from "../Images/profile_pic.png";
 
 const ProfilePic = () => {
   return (

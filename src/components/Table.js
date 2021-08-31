@@ -10,13 +10,11 @@ const Table = (props) => {
   const columns = props.columns;
   const [rows, setRows] = useState([]);
 
-  useEffect(() => {
-    async function getData() {
-      console.log("data??");
-      const res = await props.onMount();
-
-      console.log(res);
-      /* setRows(res); */
+  useEffect(async () => {
+    try {
+      await props.onMount().then((data) => setRows(data));
+    } catch (error) {
+      console.log("Error !! ", error.message);
     }
   }, []);
 
@@ -27,7 +25,7 @@ const Table = (props) => {
           class="card mx-5"
           style={{
             width: "auto",
-            filter: "drop-shadow(0 0 0.2rem #000000)"
+            filter: "drop-shadow(0 0 0.2rem #000000)",
           }}
         >
           <div class="card-body my-3">
@@ -53,7 +51,7 @@ const Table = (props) => {
                 <DataGrid
                   rows={rows}
                   columns={columns}
-                  pageSize={3}
+                  pageSize={5}
                   disableSelectionOnClick
                 />
               </div>
