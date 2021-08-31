@@ -7,30 +7,30 @@ import "../styles.css";
 
 const Departments = () => {
   const departments = [
-    {
-      name: "Department Name 1",
-    },
-    {
-      name: "Department Name 2",
-    },
-    {
-      name: "Department Name 3",
-    },
-    {
-      name: "Department Name 4",
-    },
-    {
-      name: "Department Name 5",
-    },
+    { key: 1, name: "Department Name 1" },
+    { key: 2, name: "Department Name 2" },
+    { key: 3, name: "Department Name 3" },
+    { key: 4, name: "Department Name 4" },
+    { key: 5, name: "Department Name 5" },
   ];
 
   return (
     <>
-      <h1 className="m-5">My Departments</h1>
-      <div className="grid-container grid-container--fit m-5">
-        {departments.map((dep) => (
-          <SmallCard title={dep.name} />
-        ))}
+      <div className="container my-5">
+        <div
+          className="card mx-5"
+          style={{
+            width: "auto",
+            filter: "drop-shadow(0 0 0.2rem #000000)",
+          }}
+        >
+          <h1 className="m-4">My Departments</h1>
+          <div className="grid-container grid-container--fit m-5">
+            {departments.map((dep) => (
+              <SmallCard title={dep.name} />
+            ))}
+          </div>
+        </div>
       </div>
     </>
   );

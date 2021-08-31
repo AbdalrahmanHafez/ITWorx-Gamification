@@ -7,11 +7,11 @@ import profile_pic from "../Images/profile_pic.png";
 const ProfilePic = () => {
   return (
     <>
-      <div class="Profile-Contailer">
+      <div className="Profile-Contailer">
         <a href="/#Profile">
-          <img class="ProfilePic ml-5" src={profile_pic} alt="" />
+          <img className="ProfilePic ml-5" src={profile_pic} alt="" />
         </a>
-        <div class="PointsDisplay">351 pts</div>
+        <div className="PointsDisplay">351 pts</div>
       </div>
     </>
   );

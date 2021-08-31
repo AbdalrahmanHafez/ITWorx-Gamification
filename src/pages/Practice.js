@@ -13,50 +13,70 @@ const AllActivities = () => {
     {
       field: "name",
       headerName: "Name",
-      width: 225
+      width: 225,
     },
     {
       field: "description",
       headerName: "Description",
-      width: 500
+      width: 500,
     },
     {
       field: "points",
       headerName: "Points",
-      width: 120
+      width: 120,
     },
     {
       field: "moreinfo",
       headerName: "More Info",
       description: "This column has a value getter and is not sortable.",
       sortable: false,
-      width: 125
+      width: 125,
       // valueGetter: (params) =>
       //   `${params.getValue(params.id, "firstName") || ""} ${
       //     params.getValue(params.id, "lastName") || ""
       //   }`
-    }
+    },
   ];
 
-  const setRows = async () => {
-    // const getAllActivities = async () => {
+  const [pname, setpname] = useState("");
+
+  const updateName = async () => {
     ActivitieService.getAll().then((res) => {
-      // console.log(res.data);
       const result = res.data.map((obj, i) => ({
         id: i,
         name: obj.name,
         description: obj.description,
         points: obj.totalPoints,
-        moreinfo: "moreinfo"
+        moreinfo: "moreinfo",
       }));
       console.log("result", result);
-      // setRows([]);
+
+      // setpname("eee");
+
       return result;
     });
-    // };
-    // return getAllActivities;
   };
-  return <h1>This is Practice</h1>;
+  useEffect(() => {
+    updateName();
+  }, []);
+
+  return (
+    <div className="container my-5">
+      <div
+        className="card mx-5"
+        style={{
+          width: "auto",
+          filter: "drop-shadow(0 0 0.2rem #000000)",
+        }}
+      >
+        <h1 className="m-5">
+          {pname == ""
+            ? "You don't belog to any Practice"
+            : "You're in" + { pname }}
+        </h1>
+      </div>
+    </div>
+  );
 };
 
 export default AllActivities;

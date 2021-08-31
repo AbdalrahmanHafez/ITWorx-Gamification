@@ -39,9 +39,7 @@ const AllActivities = () => {
   ];
 
   const setRows = async () => {
-    // const getAllActivities = async () => {
-    ActivitieService.getAll().then((res) => {
-      // console.log(res.data);
+    return ActivitieService.getAll().then((res) => {
       const result = res.data.map((obj, i) => ({
         id: i,
         name: obj.name,
@@ -50,11 +48,8 @@ const AllActivities = () => {
         moreinfo: "moreinfo",
       }));
       console.log("result", result);
-      // setRows([]);
       return result;
     });
-    // };
-    // return getAllActivities;
   };
   return <Table name="All Activities" columns={columns} onMount={setRows} />;
 };

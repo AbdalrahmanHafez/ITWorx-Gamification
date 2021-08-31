@@ -3,7 +3,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { NavDropdown, MenuItem } from "react-bootstrap";
 import ProfilePic from "./ProfilePic";
 
-import profile_pic from "../Images/profile_pic.png";
 import ITWorx_logo from "../Images/ITWorx_logo.png";
 
 const Navbar = () => {
@@ -11,16 +10,16 @@ const Navbar = () => {
     <div>
       <nav
         id="navB"
-        class="navbar sticky-top navbar-expand-lg navbar-light bg-light"
+        className="navbar sticky-top navbar-expand-lg navbar-light bg-light"
       >
-        <div class="container-fluid">
+        <div className="container-fluid">
           <a href="/">
-            <img class="Logo" src={ITWorx_logo} alt="ITWorx Logo" />
+            <img className="Logo" src={ITWorx_logo} alt="ITWorx Logo" />
           </a>
 
           <div className="rectangle w-100">
             <button
-              class="navbar-toggler"
+              className="navbar-toggler"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#navbarSupportedContent"
@@ -28,11 +27,14 @@ const Navbar = () => {
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <span class="navbar-toggler-icon"></span>
+              <span className="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div
+              className="collapse navbar-collapse"
+              id="navbarSupportedContent"
+            >
               {/* <ul class="navbar-nav me-auto mb-2 mb-lg-0">  */}
-              <ul class="navbar-nav nav-left">
+              <ul className="navbar-nav nav-left">
                 <NavDropdown
                   id="nav-dropdown-dark-example"
                   title="Activities"
@@ -50,9 +52,9 @@ const Navbar = () => {
                   </NavDropdown.Item>
                 </NavDropdown>
 
-                <li class="nav-item">
+                <li className="nav-item">
                   <a
-                    class="nav-link active test"
+                    className="nav-link active test"
                     aria-current="page"
                     href="/Departments"
                   >
@@ -60,9 +62,9 @@ const Navbar = () => {
                   </a>
                 </li>
 
-                <li class="nav-item">
+                <li className="nav-item">
                   <a
-                    class="nav-link active test"
+                    className="nav-link active test"
                     aria-current="page"
                     href="/Practice"
                   >
@@ -81,13 +83,13 @@ const Navbar = () => {
                     Practice Leader Board
                   </NavDropdown.Item>
 
-                  <NavDropdown.Item href="/LeaderBoardAll">
-                    All Leader Board
+                  <NavDropdown.Item href="/EmployeeRanking">
+                    Employee Ranking
                   </NavDropdown.Item>
                 </NavDropdown>
-                <li class="nav-item">
+                <li className="nav-item">
                   <a
-                    class="nav-link active test"
+                    className="nav-link active test"
                     aria-current="page"
                     href="/Badges"
                   >

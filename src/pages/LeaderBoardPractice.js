@@ -13,48 +13,43 @@ const AllActivities = () => {
     {
       field: "name",
       headerName: "Name",
-      width: 225
+      width: 225,
     },
     {
       field: "description",
       headerName: "Description",
-      width: 500
+      width: 500,
     },
     {
       field: "points",
       headerName: "Points",
-      width: 120
+      width: 120,
     },
     {
       field: "moreinfo",
       headerName: "More Info",
       description: "This column has a value getter and is not sortable.",
       sortable: false,
-      width: 125
+      width: 125,
       // valueGetter: (params) =>
       //   `${params.getValue(params.id, "firstName") || ""} ${
       //     params.getValue(params.id, "lastName") || ""
       //   }`
-    }
+    },
   ];
 
   const setRows = async () => {
-    // const getAllActivities = async () => {
-    ActivitieService.getAll().then((res) => {
-      // console.log(res.data);
+    return ActivitieService.getAll().then((res) => {
       const result = res.data.map((obj, i) => ({
         id: i,
         name: obj.name,
         description: obj.description,
         points: obj.totalPoints,
-        moreinfo: "moreinfo"
+        moreinfo: "moreinfo",
       }));
       console.log("result", result);
-      // setRows([]);
       return result;
     });
-    // };
-    // return getAllActivities;
   };
   return (
     <Table name="Leader Board Practice" columns={columns} onMount={setRows} />

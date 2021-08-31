@@ -20,28 +20,31 @@ const Table = (props) => {
 
   return (
     <>
-      <div class="container my-5">
+      <div className="container my-5">
         <div
-          class="card mx-5"
+          className="card mx-5"
           style={{
             width: "auto",
             filter: "drop-shadow(0 0 0.2rem #000000)",
           }}
         >
-          <div class="card-body my-3">
-            <p class="card-text">
-              <h1 class="mb-3" style={{ color: "black" }}>
+          <div className="card-body my-3">
+            <p className="card-text">
+              <h1 className="mb-3" style={{ color: "black" }}>
                 {props.name}
-                <div class="input-group w-25 mt-2" style={{ float: "right" }}>
+                <div
+                  className="input-group w-25 mt-2"
+                  style={{ float: "right" }}
+                >
                   <input
                     type="search"
-                    class="form-control rounded"
+                    className="form-control rounded"
                     placeholder="Search"
                     aria-label="Search"
                     aria-describedby="search-addon"
                     onChange={handleSearch}
                   />
-                  <button type="button" class="btn btn-outline-primary ">
+                  <button type="button" className="btn btn-outline-primary ">
                     search
                   </button>
                 </div>

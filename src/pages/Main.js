@@ -8,7 +8,7 @@ import YourActivities from "./YourActivities";
 
 import Departments from "./Departments";
 import Practice from "./Practice";
-import LeaderBoardAll from "./LeaderBoardAll";
+import EmployeeRanking from "./EmployeeRanking";
 import LeaderBoardDepartment from "./LeaderBoardDepartment";
 import LeaderBoardPractice from "./LeaderBoardPractice";
 import Badges from "./Badges";
@@ -35,7 +35,7 @@ const Main = () => {
         path="/LeaderBoardDepartment"
         component={LeaderBoardDepartment}
       ></Route>
-      <Route exact path="/LeaderBoardAll" component={LeaderBoardAll}></Route>
+      <Route exact path="/EmployeeRanking" component={EmployeeRanking}></Route>
 
       <Route exact path="/Badges" component={Badges}></Route>
 
