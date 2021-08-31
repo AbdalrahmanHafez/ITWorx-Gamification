@@ -5,6 +5,7 @@ import Home from "./Slideshow";
 import AllActivities from "./AllActivities";
 import NewActivities from "./NewActivities";
 import YourActivities from "./YourActivities";
+import ActivityView from "./ActivityView";
 
 import Departments from "./Departments";
 import Practice from "./Practice";
@@ -22,6 +23,7 @@ const Main = () => {
       <Route exact path="/AllActivities" component={AllActivities}></Route>
       <Route exact path="/NewActivities" component={NewActivities}></Route>
       <Route exact path="/YourActivities" component={YourActivities}></Route>
+      <Route exact path="/ActivityView" component={ActivityView}></Route>
 
       <Route exact path="/Departments" component={Departments}></Route>
       <Route exact path="/Practice" component={Practice}></Route>

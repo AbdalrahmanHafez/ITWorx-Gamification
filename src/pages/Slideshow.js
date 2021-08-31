@@ -34,7 +34,7 @@ const Slideshow = () => {
               class="card"
               style={{
                 width: "auto",
-                filter: "drop-shadow(0 0 1rem #000000)"
+                filter: "drop-shadow(0 0 1rem #000000)",
               }}
             >
               <div class="card-body">
@@ -77,7 +77,11 @@ const Slideshow = () => {
                     </tbody>
                   </table>{" "}
                 </p>
-                <a href="#" class="btn btn-primary">
+                <a
+                  href="#"
+                  class="btn btn-primary"
+                  style={{ backgroundColor: "#3a73b5" }}
+                >
                   View All Activities
                 </a>
               </div>
@@ -110,7 +114,7 @@ const Slideshow = () => {
               class="card"
               style={{
                 width: "auto",
-                filter: "drop-shadow(0 0 1rem #000000)"
+                filter: "drop-shadow(0 0 1rem #000000)",
               }}
             >
               <div class="card-body">
@@ -151,7 +155,11 @@ const Slideshow = () => {
                     </tbody>
                   </table>{" "}
                 </p>
-                <a href="#" class="btn btn-primary">
+                <a
+                  href="#"
+                  class="btn btn-primary"
+                  style={{ backgroundColor: "#3a73b5" }}
+                >
                   Go To All Leader Boards
                 </a>
               </div>
