@@ -10,25 +10,7 @@ const Slideshow = () => {
     >
       <Carousel variant="dark" pause="hover" nextLabel="" prevLabel="">
         <Carousel.Item>
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
+          <div style={{ height: "70vh" }}></div>
           <Carousel.Caption>
             <div
               class="card"
@@ -90,25 +72,8 @@ const Slideshow = () => {
         </Carousel.Item>
 
         <Carousel.Item>
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
+          <div style={{ height: "70vh" }}></div>
+
           <Carousel.Caption>
             <div
               class="card"

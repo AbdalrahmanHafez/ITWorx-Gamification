@@ -5,6 +5,8 @@ import ProfilePic from "./ProfilePic";
 
 import ITWorx_logo from "../Images/ITWorx_logo.png";
 
+const isAdmin = true;
+
 const Navbar = () => {
   return (
     <div>
@@ -35,67 +37,129 @@ const Navbar = () => {
             >
               {/* <ul class="navbar-nav me-auto mb-2 mb-lg-0">  */}
               <ul className="navbar-nav nav-left">
-                <NavDropdown
-                  id="nav-dropdown-dark-example"
-                  title="Activities"
-                  menuVariant="dark"
-                >
-                  <NavDropdown.Item href="/AllActivities">
-                    All Activities
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="/NewActivities">
-                    New Activities
-                  </NavDropdown.Item>
+                {isAdmin ? (
+                  <>
+                    <NavDropdown
+                      id="nav-dropdown-dark-example"
+                      title="Activities"
+                      menuVariant="dark"
+                    >
+                      <NavDropdown.Item href="/AllActivities">
+                        All Activities
+                      </NavDropdown.Item>
+                      <NavDropdown.Item href="/NewActivities">
+                        New Activities
+                      </NavDropdown.Item>
+                      <NavDropdown.Item href="/AddActivity">
+                        Add Activity
+                      </NavDropdown.Item>
+                    </NavDropdown>
 
-                  <NavDropdown.Item href="/YourActivities">
-                    Your Activities
-                  </NavDropdown.Item>
-                </NavDropdown>
+                    <li className="nav-item">
+                      <a
+                        className="nav-link active test"
+                        aria-current="page"
+                        href="/ReviewActivity"
+                      >
+                        Review Activities
+                      </a>
+                    </li>
 
-                <li className="nav-item">
-                  <a
-                    className="nav-link active test"
-                    aria-current="page"
-                    href="/Departments"
-                  >
-                    Department
-                  </a>
-                </li>
+                    <NavDropdown
+                      id="nav-dropdown-dark-example"
+                      title="Badges"
+                      menuVariant="dark"
+                    >
+                      <NavDropdown.Item href="/EditBadge">
+                        Edit Badges
+                      </NavDropdown.Item>
+                      <NavDropdown.Item href="/CreateBadge">
+                        Create new Badge
+                      </NavDropdown.Item>
+                    </NavDropdown>
 
-                <li className="nav-item">
-                  <a
-                    className="nav-link active test"
-                    aria-current="page"
-                    href="/Practice"
-                  >
-                    Practice
-                  </a>
-                </li>
-                <NavDropdown
-                  id="nav-dropdown-dark-example"
-                  title="Leader Board"
-                  menuVariant="dark"
-                >
-                  <NavDropdown.Item href="/LeaderBoardDepartment">
-                    Department Leader Board
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="/LeaderBoardPractice">
-                    Practice Leader Board
-                  </NavDropdown.Item>
+                    <NavDropdown
+                      id="nav-dropdown-dark-example"
+                      title="Leader Board"
+                      menuVariant="dark"
+                    >
+                      <NavDropdown.Item href="/LeaderBoardDepartment">
+                        Department Leader Board
+                      </NavDropdown.Item>
+                      <NavDropdown.Item href="/LeaderBoardPractice">
+                        Practice Leader Board
+                      </NavDropdown.Item>
 
-                  <NavDropdown.Item href="/EmployeeRanking">
-                    Employee Ranking
-                  </NavDropdown.Item>
-                </NavDropdown>
-                <li className="nav-item">
-                  <a
-                    className="nav-link active test"
-                    aria-current="page"
-                    href="/Badges"
-                  >
-                    Badges
-                  </a>
-                </li>
+                      <NavDropdown.Item href="/EmployeeRanking">
+                        Employee Ranking
+                      </NavDropdown.Item>
+                    </NavDropdown>
+                  </>
+                ) : (
+                  <>
+                    <NavDropdown
+                      id="nav-dropdown-dark-example"
+                      title="Activities"
+                      menuVariant="dark"
+                    >
+                      <NavDropdown.Item href="/AllActivities">
+                        All Activities
+                      </NavDropdown.Item>
+                      <NavDropdown.Item href="/NewActivities">
+                        New Activities
+                      </NavDropdown.Item>
+
+                      <NavDropdown.Item href="/YourActivities">
+                        Your Activities
+                      </NavDropdown.Item>
+                    </NavDropdown>
+
+                    <li className="nav-item">
+                      <a
+                        className="nav-link active test"
+                        aria-current="page"
+                        href="/Departments"
+                      >
+                        Department
+                      </a>
+                    </li>
+
+                    <li className="nav-item">
+                      <a
+                        className="nav-link active test"
+                        aria-current="page"
+                        href="/Practice"
+                      >
+                        Practice
+                      </a>
+                    </li>
+                    <NavDropdown
+                      id="nav-dropdown-dark-example"
+                      title="Leader Board"
+                      menuVariant="dark"
+                    >
+                      <NavDropdown.Item href="/LeaderBoardDepartment">
+                        Department Leader Board
+                      </NavDropdown.Item>
+                      <NavDropdown.Item href="/LeaderBoardPractice">
+                        Practice Leader Board
+                      </NavDropdown.Item>
+
+                      <NavDropdown.Item href="/EmployeeRanking">
+                        Employee Ranking
+                      </NavDropdown.Item>
+                    </NavDropdown>
+                    <li className="nav-item">
+                      <a
+                        className="nav-link active test"
+                        aria-current="page"
+                        href="/Badges"
+                      >
+                        Badges
+                      </a>
+                    </li>
+                  </>
+                )}
               </ul>
             </div>
           </div>

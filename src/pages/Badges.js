@@ -3,6 +3,8 @@ import { DataGrid } from "@material-ui/data-grid";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ActivitieService from "../services/ActivityService";
 import Table from "../components/Table";
+import fakeAuth from "fake-auth";
+import { ResponsiveEmbed } from "react-bootstrap";
 
 const AllActivities = () => {
   const handleSearch = (event) => {
@@ -28,7 +30,12 @@ const AllActivities = () => {
     // return getAllActivities;
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    fakeAuth
+      .signin("demo@gmail.com", "demo")
+      .then((response) => console.log(response));
+    // fakeAuth.signout();
+  }, []);
 
   return (
     <div className="container my-5">
