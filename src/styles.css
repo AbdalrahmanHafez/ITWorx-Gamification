@@ -99,3 +99,6 @@ span.carousel-control-prev-icon {
 .grid-container--fit {
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
 }
+.hidden {
+  display: none;
+}
