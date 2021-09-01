@@ -17,6 +17,7 @@ import LeaderBoardDepartment from "./LeaderBoardDepartment";
 import LeaderBoardPractice from "./LeaderBoardPractice";
 import Badges from "./Badges";
 import TestPage from "./TestPage";
+import PageNotFound from "./PageNotFound";
 
 // Admin
 import AddActivity from "./AddActivity";
@@ -71,6 +72,10 @@ const Main = () => {
       <Route exact path="/TestPage" component={TestPage}></Route>
 
       <PrivateRoute path="/AddActivity" component={AddActivity} />
+
+      <Route path="*">
+        <PageNotFound />
+      </Route>
     </Switch>
   );
 };
