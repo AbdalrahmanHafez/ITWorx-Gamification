@@ -119,13 +119,9 @@ const Navbar = () => {
                     </li>
 
                     <li className="nav-item">
-                      <a
-                        className="nav-link active test"
-                        aria-current="page"
-                        href="/Practice"
-                      >
+                      <Link className="link nav-link active" to="/Practice">
                         Practice
-                      </a>
+                      </Link>
                     </li>
                     <NavDropdown
                       id="nav-dropdown-dark-example"
