@@ -8,14 +8,7 @@ import background from "./Images/bulding_bg_smaller.png";
 export default function App() {
   return (
     <>
-      <div
-        style={{
-          // backgroundColor: "gray",
-          backgroundImage: `url(${background})`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "100% auto",
-        }}
-      >
+      <div>
         <Navbar />
         <Main />
       </div>

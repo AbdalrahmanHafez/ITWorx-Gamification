@@ -166,6 +166,7 @@ const Navbar = () => {
         </div>
         <ProfilePic />
         <span>practice name</span>
+        {isAdmin && <span>Admin</span>}
       </nav>
     </div>
   );

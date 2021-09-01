@@ -2,11 +2,10 @@ import React from "react";
 import { Redirect, Switch, Route } from "react-router-dom";
 import fakeAuth from "fake-auth";
 
-import Home from "./Slideshow";
+import Slideshow from "./Slideshow";
 import AllActivities from "./AllActivities";
 import NewActivities from "./NewActivities";
 import YourActivities from "./YourActivities";
-import AddActivitiy from "./AddActivity";
 import ActivityView from "./ActivityView";
 import EditBadge from "./EditBadge";
 import CreateBadge from "./CreateBadge";
@@ -46,7 +45,7 @@ const Main = () => {
   return (
     <Switch>
       {/* The Switch decides which component to show based on the current URL.*/}
-      <Route exact path="/" component={Home}></Route>
+      <Route exact path="/" component={Slideshow}></Route>
       <Route exact path="/AllActivities" component={AllActivities}></Route>
       <Route exact path="/NewActivities" component={NewActivities}></Route>
       <Route exact path="/YourActivities" component={YourActivities}></Route>

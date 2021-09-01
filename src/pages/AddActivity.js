@@ -15,9 +15,11 @@ const AddActivitiy = () => {
   return (
     <div className="container my-5">
       <div
-        className="card mx-5"
+        className="card w-50 mx-auto"
         style={{
-          width: "auto",
+          borderStyle: "solid",
+          // width: "40vw",
+          justifyContent: "center",
           filter: "drop-shadow(0 0 0.2rem #000000)",
         }}
       >
@@ -27,20 +29,28 @@ const AddActivitiy = () => {
           style={{ fontWeight: "bold", fontSize: "110%" }}
         >
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Label className="font-weight-bold">Activity Name</Form.Label>
+            <Form.Label className="font-weight-bold">Name</Form.Label>
             <Form.Control type="name" placeholder="Interview Employees" />
           </Form.Group>
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
             <Form.Label>Description</Form.Label>
             <Form.Control as="textarea" rows={3} />
           </Form.Group>
-          <Row className="g-2">
+          <Row className="g-3">
+            <Col xs={10}>
+              <Form.Group
+                className="mb-3 w-25"
+                controlId="exampleForm.ControlInput1"
+              >
+                <Form.Label className="font-weight-bold">
+                  Total points
+                </Form.Label>
+                <Form.Control type="name" placeholder="ex : 300" />
+              </Form.Group>
+            </Col>
             <Col md>
               <Form.Group className="mb-3">
-                <DropdownButton
-                  id="dropdown-basic-button"
-                  title="Dropdown button"
-                >
+                <DropdownButton id="dropdown-basic-button" title="Type">
                   <Dropdown.Item href="#/action-1">Developer</Dropdown.Item>
                   <Dropdown.Item href="#/action-2">NonDevelopers</Dropdown.Item>
                 </DropdownButton>
@@ -51,23 +61,34 @@ const AddActivitiy = () => {
                 <Form.Check
                   type="checkbox"
                   id={`default-checkbox`}
-                  label={`Active?`}
+                  label={`Disabled`}
                 />
               </Form.Group>
             </Col>
           </Row>
-
-          <div style={{ width: "auto" }}>
-            <Button
-              className="float-right"
-              style={{
-                display: "flex",
-                justifyContent: "right",
-                width: "auto",
-              }}
-              type="submit"
-            >
-              Submit form
+          <Row>
+            <Col>
+              <Form.Label className="font-weight-bold">Starts on</Form.Label>
+            </Col>
+            <Col xs={7}>
+              <Form.Control type="date" name="date_of_" />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Form.Label className="font-weight-bold">Ends on</Form.Label>
+            </Col>
+            <Col xs={7}>
+              <Form.Control type="date" name="date_of_" />
+            </Col>
+          </Row>
+          <div
+            style={{
+              textAlign: "right",
+            }}
+          >
+            <Button className="mt-3" type="submit">
+              Submit
             </Button>
           </div>
         </Form>

@@ -1,57 +1,84 @@
 import { React, useState, useEffect } from "react";
-import { DataGrid } from "@material-ui/data-grid";
 import "bootstrap/dist/css/bootstrap.min.css";
-import ActivitieService from "../services/ActivityService";
-import Table from "../components/Table";
+import {
+  Form,
+  DropdownButton,
+  Dropdown,
+  Button,
+  Row,
+  Col,
+} from "react-bootstrap";
 
 const CreateBadge = () => {
-  const handleSearch = (event) => {
-    const value = event.target.value;
-    console.log(value);
-  };
-  const columns = [
-    {
-      field: "name",
-      headerName: "Name",
-      width: 225,
-    },
-    {
-      field: "description",
-      headerName: "Description",
-      width: 500,
-    },
-    {
-      field: "points",
-      headerName: "Points",
-      width: 120,
-    },
-    {
-      field: "moreinfo",
-      headerName: "More Info",
-      description: "This column has a value getter and is not sortable.",
-      sortable: false,
-      width: 125,
-      // valueGetter: (params) =>
-      //   `${params.getValue(params.id, "firstName") || ""} ${
-      //     params.getValue(params.id, "lastName") || ""
-      //   }`
-    },
-  ];
+  //  Name, Description, Type, Points Needed, Enabled
 
-  const setRows = async () => {
-    return ActivitieService.getAll().then((res) => {
-      const result = res.data.map((obj, i) => ({
-        id: i,
-        name: obj.name,
-        description: obj.description,
-        points: obj.totalPoints,
-        moreinfo: "moreinfo",
-      }));
-      console.log("result", result);
-      return result;
-    });
-  };
-  return <h1>hel</h1>;
+  return (
+    <div className="container my-4">
+      <div
+        className="card w-50 mx-auto"
+        style={{
+          borderStyle: "solid",
+          // width: "40vw",
+          justifyContent: "center",
+          filter: "drop-shadow(0 0 0.2rem #000000)",
+        }}
+      >
+        <h1 className="m-5">Add New Badge</h1>
+        <Form
+          className="container px-5 mb-4 "
+          style={{ fontWeight: "bold", fontSize: "110%" }}
+        >
+          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Label className="font-weight-bold">Name</Form.Label>
+            <Form.Control type="name" placeholder="Interview Employees" />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+            <Form.Label>Description</Form.Label>
+            <Form.Control as="textarea" rows={3} />
+          </Form.Group>
+          <Row className="g-3">
+            <Col xs={10}>
+              <Form.Group
+                className="mb-3 w-25"
+                controlId="exampleForm.ControlInput1"
+              >
+                <Form.Label className="font-weight-bold">
+                  Points Needed
+                </Form.Label>
+                <Form.Control type="name" placeholder="ex : 300" />
+              </Form.Group>
+            </Col>
+            <Col md>
+              <Form.Group className="mb-3">
+                <DropdownButton id="dropdown-basic-button" title="Type">
+                  <Dropdown.Item href="#/action-1">Developer</Dropdown.Item>
+                  <Dropdown.Item href="#/action-2">NonDevelopers</Dropdown.Item>
+                </DropdownButton>
+              </Form.Group>
+            </Col>
+            <Col>
+              <Form.Group className="mb-3">
+                <Form.Check
+                  type="checkbox"
+                  id={`default-checkbox`}
+                  label={`Disabled`}
+                />
+              </Form.Group>
+            </Col>
+          </Row>
+          <div
+            style={{
+              textAlign: "right",
+            }}
+          >
+            <Button className="mt-3" type="submit">
+              Submit
+            </Button>
+          </div>
+        </Form>
+      </div>
+    </div>
+  );
 };
 
 export default CreateBadge;

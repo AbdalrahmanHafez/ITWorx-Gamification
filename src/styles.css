@@ -2,8 +2,23 @@
   font-family: sans-serif;
   text-align: center;
 }
+
 body {
-  background-image: url("./Images/bulding_bg_smaller.png") !important;
+  background-color: gray;
+  background-image: url("./Images/bulding_bg_smaller.png");
+  height: 100vh;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+body,
+html {
+  height: 100%;
+  margin: 0;
 }
 
 .Logo {
@@ -41,8 +56,7 @@ nav {
 }
 
 .Slideshow {
-  height: 1500px;
-  width: auto;
+  height: 80vh;
 }
 
 /* .carousel-control-prev-icon,
