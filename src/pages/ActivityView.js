@@ -1,45 +1,42 @@
 import { React, useState, useEffect } from "react";
-import { DataGrid } from "@material-ui/data-grid";
 import "bootstrap/dist/css/bootstrap.min.css";
-import ActivitieService from "../services/ActivityService";
-import Table from "../components/Table";
 
+import { Form, ListGroup, Row, Col, Card } from "react-bootstrap";
+import { Redirect, Switch, Route, useParams } from "react-router-dom";
+// you can use ActivityView = ({match}) instead
 const ActivityView = () => {
-  const handleSearch = (event) => {
-    const value = event.target.value;
-    console.log(value);
-  };
-
-  const getBadges = async () => {
-    ActivitieService.getAll().then((res) => {
-      // console.log(res.data);
-      const result = res.data.map((obj, i) => ({
-        id: i,
-        name: obj.name,
-        description: obj.description,
-        points: obj.totalPoints,
-        moreinfo: "moreinfo",
-      }));
-      console.log("result", result);
-      // setRows([]);
-      return result;
-    });
-    // };
-    // return getAllActivities;
-  };
-
-  useEffect(() => {}, []);
+  let { activityId } = useParams();
+  console.log("activity id from url", activityId);
 
   return (
-    <div className="container my-5">
+    <div className="container my-4">
       <div
-        className="card mx-5"
-        style={{
-          width: "auto",
-          filter: "drop-shadow(0 0 0.2rem #000000)",
-        }}
+        className="card mx-auto w-50"
+        style={{ filter: "drop-shadow(0 0 0.2rem #000000)" }}
       >
-        <h1 className="m-5">Activity Details</h1>
+        <Card>
+          <Card.Header>
+            <h3>Activity Name</h3>
+          </Card.Header>
+          <ListGroup variant="flush">
+            <ListGroup.Item>
+              <h4>Description</h4>
+              <span>the is the activity Descroption</span>
+            </ListGroup.Item>
+            <ListGroup.Item variant="warning">
+              <h4>Perks</h4>
+              <ul>
+                <li>Points: 350pt</li>
+                <li>Cretificate of compeletion</li>
+              </ul>
+            </ListGroup.Item>
+            <ListGroup.Item variant="dark">
+              <span>Starts on: 15-9-2021</span>
+              <br />
+              <span>Ends on: 15-9-2021</span>
+            </ListGroup.Item>
+          </ListGroup>
+        </Card>
       </div>
     </div>
   );
