@@ -6,7 +6,7 @@ import { NavLink, Link, Redirect, useHistory } from "react-router-dom";
 
 import ITWorx_logo from "../Images/ITWorx_logo.png";
 
-const isAdmin = false;
+const isAdmin = true;
 
 const Navbar = () => {
   return (

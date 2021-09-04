@@ -23,6 +23,7 @@ import LeaderBoardPractice from "./LeaderBoardPractice";
 import Badges from "./Badges";
 import TestPage from "./TestPage";
 import PageNotFound from "./PageNotFound";
+import Login from "./Login";
 
 // Admin
 import AddActivity from "./AddActivity";
@@ -84,6 +85,7 @@ const Main = () => {
         ></Route>
         <Route exact path="/Badges" component={Badges}></Route>
         <Route exact path="/TestPage" component={TestPage}></Route>
+        <Route exact path="/login" component={Login}></Route>
 
         <PrivateRoute path="/AddActivity" component={AddActivity} />
 

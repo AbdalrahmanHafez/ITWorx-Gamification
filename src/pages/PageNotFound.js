@@ -21,7 +21,6 @@ const PageNotFound = () => {
               🏠 <br /> Go Home
             </Button>
           </Link>
-
           <div style={{ height: "10vh" }}></div>
         </div>
       </div>
