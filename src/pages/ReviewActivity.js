@@ -13,6 +13,7 @@ import {
 } from "react-bootstrap";
 
 const ReviewActivity = () => {
+  // TODO: Remove this button current cycle
   const [selectedCycleName, setSelectedCycleName] = useState("Current Cycle");
   const handleSelectCycle = (eventKey, event) => {
     console.log("logg_1", eventKey);
@@ -29,19 +30,6 @@ const ReviewActivity = () => {
         className="card mx-auto"
         style={{ filter: "drop-shadow(0 0 0.2rem #000000)" }}
       >
-        <Row className="mt-4 mx-4 align-items-center bg-light">
-          <DropdownButton
-            variant="light"
-            id="dropdown-select-badge"
-            title={<h6>{selectedCycleName}</h6>}
-            onSelect={handleSelectCycle}
-          >
-            <Dropdown.Item eventKey={1}>Winter Cycle '21</Dropdown.Item>
-            <Dropdown.Item eventKey={2}>Spring Cycle '21</Dropdown.Item>
-            <Dropdown.Item eventKey={3}>Summer Cycle '21</Dropdown.Item>
-          </DropdownButton>
-        </Row>
-        <hr />
         <ActivityBox clickHandler={handleButtonClick} />
         <hr />
         <ActivityBox clickHandler={handleButtonClick} />

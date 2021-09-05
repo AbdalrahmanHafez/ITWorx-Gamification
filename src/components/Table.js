@@ -1,12 +1,7 @@
 import { React, useState, useEffect } from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import "bootstrap/dist/css/bootstrap.min.css";
-
 const Table = (props) => {
-  const handleSearch = (event) => {
-    const value = event.target.value;
-    console.log(value);
-  };
   const columns = props.columns;
   const [rows, setRows] = useState([]);
 
@@ -32,22 +27,6 @@ const Table = (props) => {
             <p className="card-text">
               <h1 className="mb-3" style={{ color: "black" }}>
                 {props.name}
-                <div
-                  className="input-group w-25 mt-2"
-                  style={{ float: "right" }}
-                >
-                  <input
-                    type="search"
-                    className="form-control rounded"
-                    placeholder="Search"
-                    aria-label="Search"
-                    aria-describedby="search-addon"
-                    onChange={handleSearch}
-                  />
-                  <button type="button" className="btn btn-outline-primary ">
-                    search
-                  </button>
-                </div>
               </h1>
 
               <div style={{ height: 400, width: "100%" }}>

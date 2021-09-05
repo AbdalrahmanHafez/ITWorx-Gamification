@@ -17,8 +17,7 @@ const PageNotFound = () => {
       >
         <div style={{ textAlign: "center" }}>
           <div style={{ height: "10vh" }}></div>
-          <h1>auth: {auth.auth}</h1>
-          <Link to="/AllActivities">
+          <Link to="/">
             <Button className="w-25" variant="outline-danger" size="lg">
               <h4 className="m-5">404 Page not Found</h4>
               <br />
