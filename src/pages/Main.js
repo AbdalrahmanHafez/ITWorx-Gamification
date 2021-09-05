@@ -5,6 +5,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import Store from "../Store";
 import fakeAuth from "fake-auth";
 
 import Slideshow from "./Slideshow";
@@ -51,48 +52,57 @@ const Main = () => {
 
   return (
     <>
-      <Switch>
-        {/* The Switch decides which component to show based on the current URL.*/}
-        <Route exact path="/" component={Slideshow}></Route>
-        <Route exact path="/AllActivities" component={AllActivities}></Route>
-        <Route exact path="/NewActivities" component={NewActivities}></Route>
-        <Route exact path="/YourActivities" component={YourActivities}></Route>
-        <Route
-          exact
-          path="/ActivityView/:activityId"
-          component={ActivityView}
-        ></Route>
-        <Route exact path="/Departments" component={Departments}></Route>
-        <Route exact path="/Practice" component={Practice}></Route>
-        <Route exact path="/ReviewActivity" component={ReviewActivity}></Route>
-        <Route exact path="/AddActivity" component={AddActivity}></Route>
-        <Route exact path="/EditBadge" component={EditBadge}></Route>
-        <Route exact path="/CreateBadge" component={CreateBadge}></Route>
-        <Route
-          exact
-          path="/LeaderBoardPractice"
-          component={LeaderBoardPractice}
-        ></Route>
-        <Route
-          exact
-          path="/LeaderBoardDepartment"
-          component={LeaderBoardDepartment}
-        ></Route>
-        <Route
-          exact
-          path="/EmployeeRanking"
-          component={EmployeeRanking}
-        ></Route>
-        <Route exact path="/Badges" component={Badges}></Route>
-        <Route exact path="/TestPage" component={TestPage}></Route>
-        <Route exact path="/login" component={Login}></Route>
+      <Store>
+        <Switch>
+          {/* The Switch decides which component to show based on the current URL.*/}
+          <Route exact path="/" component={Slideshow}></Route>
+          <Route exact path="/AllActivities" component={AllActivities}></Route>
+          <Route exact path="/NewActivities" component={NewActivities}></Route>
+          <Route
+            exact
+            path="/YourActivities"
+            component={YourActivities}
+          ></Route>
+          <Route
+            exact
+            path="/ActivityView/:activityId"
+            component={ActivityView}
+          ></Route>
+          <Route exact path="/Departments" component={Departments}></Route>
+          <Route exact path="/Practice" component={Practice}></Route>
+          <Route
+            exact
+            path="/ReviewActivity"
+            component={ReviewActivity}
+          ></Route>
+          <Route exact path="/AddActivity" component={AddActivity}></Route>
+          <Route exact path="/EditBadge" component={EditBadge}></Route>
+          <Route exact path="/CreateBadge" component={CreateBadge}></Route>
+          <Route
+            exact
+            path="/LeaderBoardPractice"
+            component={LeaderBoardPractice}
+          ></Route>
+          <Route
+            exact
+            path="/LeaderBoardDepartment"
+            component={LeaderBoardDepartment}
+          ></Route>
+          <Route
+            exact
+            path="/EmployeeRanking"
+            component={EmployeeRanking}
+          ></Route>
+          <Route exact path="/Badges" component={Badges}></Route>
+          <Route exact path="/TestPage" component={TestPage}></Route>
+          <Route exact path="/login" component={Login}></Route>
+          <PrivateRoute path="/AddActivity" component={AddActivity} />
 
-        <PrivateRoute path="/AddActivity" component={AddActivity} />
-
-        <Route path="*">
-          <PageNotFound />
-        </Route>
-      </Switch>
+          <Route path="*">
+            <PageNotFound />
+          </Route>
+        </Switch>
+      </Store>
     </>
   );
 };

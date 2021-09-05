@@ -1,9 +1,12 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button } from "react-bootstrap";
 import { Link, NavLink, Redirect } from "react-router-dom";
+import { AuthContext } from "../Store";
 
 const PageNotFound = () => {
+  const [auth, setauth] = useContext(AuthContext);
+
   return (
     <div className="container my-5">
       <div
@@ -14,6 +17,7 @@ const PageNotFound = () => {
       >
         <div style={{ textAlign: "center" }}>
           <div style={{ height: "10vh" }}></div>
+          <h1>auth: {auth.auth}</h1>
           <Link to="/AllActivities">
             <Button className="w-25" variant="outline-danger" size="lg">
               <h4 className="m-5">404 Page not Found</h4>
