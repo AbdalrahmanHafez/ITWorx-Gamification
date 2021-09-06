@@ -1,14 +1,11 @@
 import { React, useState, useEffect } from "react";
-import { DataGrid } from "@material-ui/data-grid";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ActivitieService from "../services/ActivityService";
 import Table from "../components/Table";
+import { Link } from "react-router-dom";
 
 const AllActivities = () => {
-  const handleSearch = (event) => {
-    const value = event.target.value;
-    console.log(value);
-  };
+  let allActivities = [];
   const columns = [
     {
       field: "name",
@@ -26,28 +23,38 @@ const AllActivities = () => {
       width: 120,
     },
     {
-      field: "moreinfo",
-      headerName: "More Info",
-      description: "This column has a value getter and is not sortable.",
+      field: "",
+      headerName: "More info",
       sortable: false,
-      width: 125,
-      // valueGetter: (params) =>
-      //   `${params.getValue(params.id, "firstName") || ""} ${
-      //     params.getValue(params.id, "lastName") || ""
-      //   }`
+      width: 100,
+      disableClickEventBubbling: true,
+      renderCell: (params) => {
+        return (
+          <Link
+            to={{
+              pathname: "/ActivityView/" + params.row.id,
+              allActivities: allActivities,
+            }}
+          >
+            More info
+          </Link>
+        );
+      },
     },
   ];
 
   const setRows = async () => {
     return ActivitieService.getAll().then((res) => {
+      allActivities = res.data;
       const result = res.data.map((obj, i) => ({
-        id: i,
+        id: obj.id,
         name: obj.name,
         description: obj.description,
         points: obj.totalPoints,
-        moreinfo: "moreinfo",
+        moreinfo: <Link href="/">Link</Link>,
       }));
       console.log("result", result);
+      console.log(allActivities);
       return result;
     });
   };

@@ -44,6 +44,10 @@ html {
   color: white !important;
 }
 
+.nav-link-tab {
+  color: black !important;
+}
+
 .nav-left {
   /*margin-right: 100px;
   margin-left: 50px;*/
@@ -51,7 +55,7 @@ html {
   padding-right: 3rem !important;
 }
 
-nav {
+.navbar {
   filter: drop-shadow(0 0 0.2rem #000000);
 }
 
@@ -113,4 +117,15 @@ hr {
 .link {
   color: inherit;
   text-decoration: inherit;
+}
+
+.subscribee {
+  margin: auto;
+  font-size: 25px;
+  border: none !important;
+  background: rgb(179, 6, 6) !important;
+}
+
+.subscribee:hover {
+  background: darkred !important;
 }

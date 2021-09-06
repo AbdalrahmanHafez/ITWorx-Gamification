@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from "react";
-import { DataGrid } from "@material-ui/data-grid";
+import TabPanel from "@material-ui/lab/TabPanel";
+import { DataGrid, AppBar, Tabs, Tab } from "@material-ui/core/";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import {
@@ -9,36 +10,63 @@ import {
   Button,
   Row,
   Col,
-  ButtonGroup,
 } from "react-bootstrap";
 
 const ReviewActivity = () => {
-  // TODO: Remove this button current cycle
-  const [selectedCycleName, setSelectedCycleName] = useState("Current Cycle");
-  const handleSelectCycle = (eventKey, event) => {
-    console.log("logg_1", eventKey);
-    console.log("logg_2", event);
-    setSelectedCycleName(event.target.innerText);
-  };
+  useEffect(() => {
+    // TODO: Fetch all needed to review Activities
+  }, []);
   const handleButtonClick = (activity) => {
     console.log(activity);
   };
 
   return (
-    <div className="container my-4">
-      <div
-        className="card mx-auto"
-        style={{ filter: "drop-shadow(0 0 0.2rem #000000)" }}
-      >
-        <ActivityBox clickHandler={handleButtonClick} />
-        <hr />
-        <ActivityBox clickHandler={handleButtonClick} />
-        <hr />
-        <ActivityBox clickHandler={handleButtonClick} />
-        <hr />
-        <ActivityBox clickHandler={handleButtonClick} />
+    <>
+      <div className="container my-4">
+        <div
+          className="card mx-auto"
+          style={{ filter: "drop-shadow(0 0 0.2rem #000000)" }}
+        >
+          <AppBar position="static">
+            <Tabs
+              value={value}
+              onChange={handleChange}
+              aria-label="simple tabs example"
+            >
+              <Tab label="Item One" {...a11yProps(0)} />
+              <Tab label="Item Two" {...a11yProps(1)} />
+              <Tab label="Item Three" {...a11yProps(2)} />
+            </Tabs>
+          </AppBar>
+          <TabPanel value={value} index={0}>
+            Item One
+          </TabPanel>
+          <TabPanel value={value} index={1}>
+            Item Two
+          </TabPanel>
+          <TabPanel value={value} index={2}>
+            Item Three
+          </TabPanel>
+          {/* <TabPanel value="value" index={0}>
+            Item One
+          </TabPanel>
+          <TabPanel value="value" index={1}>
+            Item Two
+          </TabPanel>
+          <TabPanel value="value" index={2}>
+            Item Three
+          </TabPanel> */}
+
+          <ActivityBox clickHandler={handleButtonClick} />
+          <hr />
+          <ActivityBox clickHandler={handleButtonClick} />
+          <hr />
+          <ActivityBox clickHandler={handleButtonClick} />
+          <hr />
+          <ActivityBox clickHandler={handleButtonClick} />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
