@@ -10,29 +10,29 @@ const YourActivities = () => {
     {
       field: "name",
       headerName: "Name",
-      width: 225
+      width: 225,
     },
     {
       field: "description",
       headerName: "Description",
-      width: 500
+      width: 500,
     },
     {
       field: "points",
       headerName: "Points",
-      width: 120
+      width: 120,
     },
     {
       field: "moreinfo",
       headerName: "More Info",
       description: "This column has a value getter and is not sortable.",
       sortable: false,
-      width: 125
+      width: 125,
       // valueGetter: (params) =>
       //   `${params.getValue(params.id, "firstName") || ""} ${
       //     params.getValue(params.id, "lastName") || ""
       //   }`
-    }
+    },
   ];
 
   const rows = [
@@ -41,18 +41,18 @@ const YourActivities = () => {
       name: "interview",
       description: "Snow",
       points: 35,
-      moreinfo: "someText"
+      moreinfo: "someText",
     },
     {
       id: 2,
       name: "interviewwwwwwwwwwwwwwwwwwwwww",
       description: "Snow Snow Snow Snow",
-      points: 35
+      points: 35,
     },
     { id: 3, name: "interview", description: "Snow", points: 35 },
     { id: 4, name: "interview", description: "Snow", points: 35 },
     { id: 5, name: "interview", description: "Snow", points: 35 },
-    { id: 6, name: "interview", description: "Snow", points: 35 }
+    { id: 6, name: "interview", description: "Snow", points: 35 },
   ];
 
   return (
@@ -62,7 +62,7 @@ const YourActivities = () => {
           class="card mx-5"
           style={{
             width: "auto",
-            filter: "drop-shadow(0 0 0.2rem #000000)"
+            filter: "drop-shadow(0 0 0.2rem #000000)",
           }}
         >
           <div class="card-body my-3">

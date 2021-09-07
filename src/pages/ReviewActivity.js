@@ -1,4 +1,5 @@
 import { React, useState, useEffect } from "react";
+import TabContext from "@material-ui/lab/TabContext";
 import TabPanel from "@material-ui/lab/TabPanel";
 import { DataGrid, AppBar, Tabs, Tab } from "@material-ui/core/";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -29,15 +30,9 @@ const ReviewActivity = () => {
           <Tab label="Item Three" />
         </Tabs>
       </AppBar>
-      <TabPanel index={0}>
-        Item One
-      </TabPanel>
-      <TabPanel index={1}>
-        Item Two
-      </TabPanel>
-      <TabPanel index={2}>
-        Item Three
-      </TabPanel>
+      <TabPanel index={0}>Item One</TabPanel>
+      <TabPanel index={1}>Item Two</TabPanel>
+      <TabPanel index={2}>Item Three</TabPanel>
     </>
   );
 };

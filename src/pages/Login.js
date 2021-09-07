@@ -57,8 +57,11 @@ const Login = () => {
           </Button> */}
           <div style={{ height: "10vh" }}></div>
         </div>
-        <Form className="mx-5" action="http://localhost:8080/Login"
-          method="POST">
+        <Form
+          className="mx-5"
+          action="http://localhost:8080/Login"
+          method="POST"
+        >
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control type="email" placeholder="Enter email" name="email" />
@@ -69,16 +72,27 @@ const Login = () => {
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" name="password" />
+            <Form.Control
+              type="password"
+              placeholder="Password"
+              name="password"
+            />
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label className="font-weight-bold pe-2">Sign in as</Form.Label>
+            <Form.Label className="font-weight-bold pe-2">
+              Sign in as
+            </Form.Label>
             <select name="type">
               <option value="Admin">Admin</option>
               <option value="Employee">Employee</option>
             </select>
           </Form.Group>
-          <Button className="mb-3" style={{ textAlign: "center" }} variant="primary" type="submit">
+          <Button
+            className="mb-3"
+            style={{ textAlign: "center" }}
+            variant="primary"
+            type="submit"
+          >
             Submit
           </Button>
         </Form>
