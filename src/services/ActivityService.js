@@ -5,12 +5,16 @@ class ActivityService {
     return http.get("/AllActivities");
   }
 
-  get(id) {
-    return http.get(`/employee/${id}`);
+  getNew() {
+    return http.get("/NewActivities");
   }
 
-  create(data) {
-    return http.post("/employee", data);
+  getYours(data) {
+    return http.post("/YourActivities", data);
+  }
+
+  get(id) {
+    return http.get(`/employee/${id}`);
   }
 
   update(id, data) {

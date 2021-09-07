@@ -87,7 +87,13 @@ const ReviewActivity = () => {
             <ActivityBox clickHandler={handleButtonClick} />
           </TabPanel>
           <TabPanel index={1} value={value}>
-            Wow Such an Empty place
+            <ActivityBox clickHandler={handleButtonClick} />
+            <hr />
+            <ActivityBox clickHandler={handleButtonClick} />
+            <hr />
+            <ActivityBox clickHandler={handleButtonClick} />
+            <hr />
+            <ActivityBox clickHandler={handleButtonClick} />
           </TabPanel>
           {/* </div> */}
         </div>
@@ -118,13 +124,6 @@ const ActivityBox = (props) => {
             onClick={() => props.clickHandler(1)}
           >
             ✔
-          </Button>{" "}
-          <Button
-            variant="outline-danger"
-            size="lg"
-            onClick={() => props.clickHandler(2)}
-          >
-            ❌
           </Button>{" "}
           <Button
             variant="outline-dark"

@@ -1,12 +1,10 @@
 import http from "./http-common";
 
-class DepartmentService {
+class BadgeService {
   getAll(data) {
-    return http.post("/EmployeeDepartments", data);
+    return http.post("/EmployeeGainedBadges", data);
   }
-  getRanking() {
-    return http.get("/DepartmentRanking");
-  }
+
   get(id) {
     return http.get(`/employee/${id}`);
   }
@@ -32,4 +30,4 @@ class DepartmentService {
   }
 }
 
-export default new DepartmentService();
+export default new BadgeService();

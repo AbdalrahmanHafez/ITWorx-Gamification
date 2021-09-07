@@ -56,9 +56,23 @@ const ActivityView = (props) => {
               <span>Ends on: {endDate}</span>
             </ListGroup.Item>
           </ListGroup>
-          <Button onClick={handleSubscribe} className="mt-5 w-100 subscribee">
-            Subscribe
-          </Button>
+          <Form
+            className="container px-5 mb-4 "
+            action="http://localhost:8080/EmployeeSubscribeToActivity"
+            method="POST"
+            style={{ fontWeight: "bold", fontSize: "110%" }}
+          >
+            <Button onClick={handleSubscribe} className="mt-5 w-100 subscribee">
+              Subscribe
+            </Button>
+            <input
+              type="hidden"
+              id="activityId"
+              name="activityId"
+              value={activityId}
+            />
+            {/* TODO: send Employee ID */}
+          </Form>
           {/* TODO: Show success / fail message */}
         </Card>
       </div>

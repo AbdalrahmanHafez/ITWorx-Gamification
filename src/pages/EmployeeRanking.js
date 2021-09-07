@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import "bootstrap/dist/css/bootstrap.min.css";
-import ActivitieService from "../services/ActivityService";
+import EmployeeService from "../services/EmployeeService";
 import Table from "../components/Table";
 
 const EmployeeRanking = () => {
@@ -9,45 +9,36 @@ const EmployeeRanking = () => {
     {
       field: "name",
       headerName: "Name",
-      width: 225,
-    },
-    {
-      field: "description",
-      headerName: "Description",
-      width: 500,
+      width: 350,
     },
     {
       field: "points",
       headerName: "Points",
       width: 120,
     },
-    {
-      field: "moreinfo",
-      headerName: "More Info",
-      description: "This column has a value getter and is not sortable.",
-      sortable: false,
-      width: 125,
-      // valueGetter: (params) =>
-      //   `${params.getValue(params.id, "firstName") || ""} ${
-      //     params.getValue(params.id, "lastName") || ""
-      //   }`
-    },
   ];
 
   const setRows = async () => {
-    return ActivitieService.getAll().then((res) => {
+    return EmployeeService.getRanking().then((res) => {
       const result = res.data.map((obj, i) => ({
         id: i,
         name: obj.name,
-        description: obj.description,
-        points: obj.totalPoints,
-        moreinfo: "moreinfo",
+        points: obj.points,
       }));
       console.log("result", result);
       return result;
     });
   };
-  return <Table name="All Leader Boards" columns={columns} onMount={setRows} />;
+  return (
+    <div
+      style={{
+        width: "50%",
+        margin: "auto",
+      }}
+    >
+      <Table name="Employee Leader Board" columns={columns} onMount={setRows} />
+    </div>
+  );
 };
 
 export default EmployeeRanking;

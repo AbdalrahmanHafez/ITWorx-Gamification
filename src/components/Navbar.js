@@ -6,7 +6,7 @@ import { NavLink, Link, Redirect, useHistory } from "react-router-dom";
 
 import ITWorx_logo from "../Images/ITWorx_logo.png";
 
-const isAdmin = true;
+const isAdmin = false;
 
 const Navbar = () => {
   return (
@@ -115,12 +115,6 @@ const Navbar = () => {
                     <li className="nav-item">
                       <Link className="link nav-link active" to="/Departments">
                         Department
-                      </Link>
-                    </li>
-
-                    <li className="nav-item">
-                      <Link className="link nav-link active" to="/Practice">
-                        Practice
                       </Link>
                     </li>
                     <NavDropdown

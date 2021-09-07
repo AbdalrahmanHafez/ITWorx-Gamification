@@ -17,7 +17,6 @@ import EditBadge from "./EditBadge";
 import CreateBadge from "./CreateBadge";
 import ReviewActivity from "./ReviewActivity";
 import Departments from "./Departments";
-import Practice from "./Practice";
 import EmployeeRanking from "./EmployeeRanking";
 import LeaderBoardDepartment from "./LeaderBoardDepartment";
 import LeaderBoardPractice from "./LeaderBoardPractice";
@@ -69,7 +68,6 @@ const Main = () => {
             component={ActivityView}
           ></Route>
           <Route exact path="/Departments" component={Departments}></Route>
-          <Route exact path="/Practice" component={Practice}></Route>
           <Route
             exact
             path="/ReviewActivity"

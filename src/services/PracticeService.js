@@ -1,12 +1,10 @@
 import http from "./http-common";
 
-class DepartmentService {
-  getAll(data) {
-    return http.post("/EmployeeDepartments", data);
-  }
+class PracticeService {
   getRanking() {
-    return http.get("/DepartmentRanking");
+    return http.get("/PracticeRanking");
   }
+
   get(id) {
     return http.get(`/employee/${id}`);
   }
@@ -32,4 +30,4 @@ class DepartmentService {
   }
 }
 
-export default new DepartmentService();
+export default new PracticeService();

@@ -1,18 +1,29 @@
 import { React, useState, useEffect } from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import "bootstrap/dist/css/bootstrap.min.css";
-import ActivitieService from "../services/ActivityService";
+import DepartmentService from "../services/DepartmentService";
 import SmallCard from "../components/SmallCard";
 import "../styles.css";
 
 const Departments = () => {
-  const departments = [
-    { key: 1, name: "Department Name 1" },
-    { key: 2, name: "Department Name 2" },
-    { key: 3, name: "Department Name 3" },
-    { key: 4, name: "Department Name 4" },
-    { key: 5, name: "Department Name 5" },
-  ];
+  const [departments, setDepartments] = useState([]);
+
+  useEffect(() => {
+    // TODO: employee id
+    DepartmentService.getAll({ employeeId: 1 }).then((res) => {
+      console.log(res.data);
+      setDepartments(
+        res.data.map((obj, i) => ({
+          key: i,
+          depName: obj.departmentName,
+        }))
+      );
+      //[{      Percentage: 19
+      //       departmentName: "python"
+      //       employeeId: 1
+      //       endDate: "2021-09-15"}, ....]
+    });
+  }, []);
 
   return (
     <>
@@ -27,7 +38,7 @@ const Departments = () => {
           <h1 className="m-4">My Departments</h1>
           <div className="grid-container grid-container--fit m-5">
             {departments.map((dep) => (
-              <SmallCard title={dep.name} />
+              <SmallCard title={dep.depName} />
             ))}
           </div>
         </div>
