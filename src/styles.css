@@ -1,0 +1,131 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+body {
+  background-color: gray;
+  background-image: url("./Images/bulding_bg_smaller.png");
+  height: 100vh;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+}
+
+.Logo {
+  height: 75px;
+  width: auto;
+  margin-right: 1rem;
+}
+
+.rectangle {
+  display: inline-block;
+  width: auto;
+  height: auto;
+  background: darkred;
+  border-radius: 25px;
+  margin-right: 10rem;
+}
+
+#navB {
+  background-color: white !important;
+}
+
+.nav-link {
+  color: white !important;
+}
+
+.nav-link-tab {
+  color: black !important;
+}
+
+.nav-left {
+  /*margin-right: 100px;
+  margin-left: 50px;*/
+  padding-left: 2rem !important;
+  padding-right: 3rem !important;
+}
+
+.navbar {
+  filter: drop-shadow(0 0 0.2rem #000000);
+}
+
+.Slideshow {
+  height: 80vh;
+}
+
+/* .carousel-control-prev-icon,
+.carousel-control-next-icon {
+  height: 100px;
+  width: 100px;
+  outline: black;
+  background-size: 100%, 100%;
+
+  background-image: none;
+} */
+
+/* .carousel-control-next-icon:after {
+  content: ">";
+  font-size: 55px;
+  color: black;
+}
+
+.carousel-control-prev-icon:after {
+  content: "<";
+  font-size: 55px;
+  color: black;
+} */
+
+span.carousel-control-next-icon {
+  background-color: #000000;
+}
+span.carousel-control-prev-icon {
+  background-color: #000000;
+}
+
+.grid-container {
+  display: grid;
+}
+
+.grid-container--fill {
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+}
+
+.grid-container--fit {
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+.hidden {
+  display: none;
+}
+
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.link {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.subscribee {
+  margin: auto;
+  font-size: 25px;
+  border: none !important;
+  background: rgb(179, 6, 6) !important;
+}
+
+.subscribee:hover {
+  background: darkred !important;
+}
