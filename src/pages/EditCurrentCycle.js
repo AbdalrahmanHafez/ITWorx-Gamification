@@ -16,7 +16,7 @@ const EditCurrentCycle = () => {
       >
         <Form
           method="post"
-          action="http://localhost:8080/EditBadge"
+          action="http://localhost:8080/EditCycle"
           className="container px-5 mb-4"
           style={{ fontWeight: "bold", fontSize: "110%" }}
         >
@@ -28,44 +28,20 @@ const EditCurrentCycle = () => {
             <Form.Label className="font-weight-bold">Name</Form.Label>
             <Form.Control type="name" placeholder="" name="name" />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-            <Form.Label>Description</Form.Label>
-            <Form.Control as="textarea" rows={3} name="description" />
-          </Form.Group>
-          <Row className="g-3">
-            <Col xs={10}>
-              <Form.Group
-                className="mb-3 w-25"
-                controlId="exampleForm.ControlInput1"
-              >
-                <Form.Label className="font-weight-bold">
-                  Points Needed
-                </Form.Label>
-                <Form.Control
-                  type="name"
-                  placeholder="ex : 300"
-                  name="pointsNeeded"
-                />
-              </Form.Group>
-            </Col>
-            <Col md>
-              <Form.Group className="mb-3">
-                <Form.Label className="font-weight-bold pe-2">Type</Form.Label>
-                <select name="isDeveloper">
-                  <option value="developer">Developer</option>
-                  <option value="nonDeveloper">Non Developer</option>
-                </select>
-              </Form.Group>
-            </Col>
+          <Row>
             <Col>
-              <Form.Group className="mb-3">
-                <Form.Check
-                  type="checkbox"
-                  id={`default-checkbox`}
-                  label={`Disabled`}
-                  name="disabled"
-                />
-              </Form.Group>
+              <Form.Label className="font-weight-bold">Starts on</Form.Label>
+            </Col>
+            <Col xs={7}>
+              <Form.Control className="mb-2" type="date" name="start_date" />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Form.Label className="font-weight-bold">Ends on</Form.Label>
+            </Col>
+            <Col xs={7}>
+              <Form.Control type="date" name="end_date" />
             </Col>
           </Row>
           <div

@@ -29,23 +29,21 @@ const AddNewCycle = () => {
             <Form.Control type="name" placeholder="" name="name" />
           </Form.Group>
 
-          <Row className="g-3">
-            <Col xs={10}>
-              <Form.Group
-                className="mb-3 w-25"
-                controlId="exampleForm.ControlInput1"
-              >
-                <Form.Label className="font-weight-bold">
-                  Points Needed
-                </Form.Label>
-                <Form.Control
-                  type="name"
-                  placeholder="ex : 300"
-                  name="pointsNeeded"
-                />
-              </Form.Group>
+          <Row>
+            <Col>
+              <Form.Label className="font-weight-bold">Starts on</Form.Label>
             </Col>
-            <Col md></Col>
+            <Col xs={7}>
+              <Form.Control className="mb-2" type="date" name="start_date" />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Form.Label className="font-weight-bold">Ends on</Form.Label>
+            </Col>
+            <Col xs={7}>
+              <Form.Control type="date" name="end_date" />
+            </Col>
           </Row>
           <div
             style={{
