@@ -24,6 +24,8 @@ import Badges from "./Badges";
 import TestPage from "./TestPage";
 import PageNotFound from "./PageNotFound";
 import Login from "./Login";
+import EditCurrentCycle from "./EditCurrentCycle";
+import AddNewCycle from "./AddNewCycle";
 
 // Admin
 import AddActivity from "./AddActivity";
@@ -94,6 +96,8 @@ const Main = () => {
           <Route exact path="/Badges" component={Badges}></Route>
           <Route exact path="/TestPage" component={TestPage}></Route>
           <Route exact path="/login" component={Login}></Route>
+          <Route exact path="/EditCurrentCycle" component={EditCurrentCycle} />
+          <Route exact path="/AddNewCycle" component={AddNewCycle} />
           <PrivateRoute path="/AddActivity" component={AddActivity} />
 
           <Route path="*">
