@@ -7,22 +7,65 @@ import { AuthContext } from "../Store";
 import MicrosoftLogin from "react-microsoft-login";
 import ActionBugReport from "material-ui/svg-icons/action/bug-report";
 
+import axios from "axios";
+
 const Login = () => {
   const [auth, setauth] = useContext(AuthContext);
   const YOUR_CLIENT_ID = "4e78d60f-d1e8-441f-bcff-efae8a5511e3";
   const [msalInstance, onMsalInstanceChange] = useState();
 
-  const loginHandler = (err, data, msal) => {
-    console.log("Login Handler", err, data);
-    if (!err && data) {
-      // onMsalInstanceChange(msal);
-      setauth({ msalInstance: msal });
-    }
+  const loginHandler = () => {
+    axios
+      .post(
+        "http://localhost:8080/login",
+        {
+          email: "ahmed_khalid@gmail.com",
+          password: "pass123",
+          isadminlogin: false,
+        },
+        { withCredentials: true, "Access-Control-Allow-Credentials": true }
+      )
+      .then((response) => console.log("Success ========>", response))
+      .catch((error) => {
+        console.log("Error ========>", error);
+      });
   };
+  const loginAdminHandler = () => {
+    axios
+      .post(
+        "http://localhost:8080/login",
+        {
+          email: "admin1@gmail.com",
+          password: "admin123",
+          isadminlogin: true,
+        },
+        { withCredentials: true, "Access-Control-Allow-Credentials": true }
+      )
+      .then((response) => console.log("Success ========>", response))
+      .catch((error) => {
+        console.log("Error ========>", error);
+      });
+  };
+  const getAdminHandler = () => {
+    axios
+      .get("http://localhost:8080/db", { withCredentials: true })
+      .then((response) => console.log("Success ========>", response))
+      .catch((error) => {
+        console.log("Error ========>", error);
+      });
+  };
+
   const logoutHandler = () => {
-    console.log("Logging the User Out");
-    // msalInstance.logout();
-    auth.msalInstance.logout();
+    axios
+      .post(
+        "http://localhost:8080/logout",
+        {},
+        { withCredentials: true, "Access-Control-Allow-Credentials": true }
+      )
+      .then((response) => console.log("Success ========>", response))
+      .catch((error) => {
+        console.log("Error ========>", error);
+      });
   };
 
   return (
@@ -35,26 +78,12 @@ const Login = () => {
       >
         <div style={{ textAlign: "center" }}>
           <div style={{ height: "10vh" }}></div>
-
           <h1>Authentication</h1>
-          {auth.msalInstance ? (
-            <Button className="m-3" onClick={logoutHandler}>
-              Logout
-            </Button>
-          ) : (
-            <MicrosoftLogin
-              clientId={YOUR_CLIENT_ID}
-              authCallback={loginHandler}
-              redirectUri="http://localhost:3000/login"
-            />
-          )}
-          {/* <MicrosoftLogin
-            clientId={YOUR_CLIENT_ID}
-            authCallback={authHandler}
-          />
-          <Button className="m-3" onClick={logoutHandle}>
-            Logout
-          </Button> */}
+          <Button onClick={loginHandler}>Login</Button>
+          <Button onClick={loginAdminHandler}>Login - Admin</Button>
+          <Button onClick={getAdminHandler}>Get 1</Button>
+          <Button onClick={logoutHandler}>Logout</Button>
+
           <div style={{ height: "10vh" }}></div>
         </div>
         <Form
