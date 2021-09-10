@@ -26,6 +26,7 @@ import TestPage from "./TestPage";
 import PageNotFound from "./PageNotFound";
 import Login from "./Login";
 import EditCurrentCycle from "./EditCurrentCycle";
+import ParticipatingEmployees from "./ParticipatingEmployees";
 import AddNewCycle from "./AddNewCycle";
 
 // Admin
@@ -98,8 +99,13 @@ const Main = () => {
           <Route exact path="/login" component={Login}></Route>
           <Route exact path="/EditCurrentCycle" component={EditCurrentCycle} />
           <Route exact path="/AddNewCycle" component={AddNewCycle} />
-          <PrivateRoute path="/AddActivity" component={AddActivity} />
+          <Route
+            exact
+            path="/ParticipatingEmployees"
+            component={ParticipatingEmployees}
+          />
 
+          <PrivateRoute path="/AddActivity" component={AddActivity} />
           <Route exact path="/Badges" component={Badges} />
 
           <Route path="*">
