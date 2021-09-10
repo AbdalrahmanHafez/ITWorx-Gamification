@@ -3,6 +3,8 @@ import { DataGrid } from "@material-ui/data-grid";
 import "bootstrap/dist/css/bootstrap.min.css";
 import DepartmentService from "../services/DepartmentService";
 import Table from "../components/Table";
+import { ExportCSV } from './ExportCSV';
+
 
 const LeaderBoardDepartment = () => {
   const handleSearch = (event) => {
@@ -34,19 +36,38 @@ const LeaderBoardDepartment = () => {
       return result;
     });
   };
+
+  const fileName = "Test";
+  const viewers = [
+    {
+      id: 1,
+      name: "Activity 1",
+      pointss: 30
+    },
+    {
+      id: 2,
+      name: "Activity 2",
+      pointss: 20
+    }
+  ]
+
+
   return (
-    <div
-      style={{
-        width: "50%",
-        margin: "auto",
-      }}
-    >
-      <Table
-        name="Department LeaderBoard"
-        columns={columns}
-        onMount={setRows}
-      />
-    </div>
+    <>
+      <ExportCSV csvData={viewers} fileName={fileName} />
+      <div
+        style={{
+          width: "50%",
+          margin: "auto",
+        }}
+      >
+        <Table
+          name="Department LeaderBoard"
+          columns={columns}
+          onMount={setRows}
+        />
+      </div>
+    </>
   );
 };
 
