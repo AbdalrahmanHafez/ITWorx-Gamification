@@ -24,13 +24,17 @@ import LeaderBoardPractice from "./LeaderBoardPractice";
 import Badges from "./Badges";
 import TestPage from "./TestPage";
 import PageNotFound from "./PageNotFound";
-import Login from "./Login";
 import EditCurrentCycle from "./EditCurrentCycle";
 import ParticipatingEmployees from "./ParticipatingEmployees";
 import AddNewCycle from "./AddNewCycle";
+import Login from "./Login";
 
 // Admin
 import AddActivity from "./AddActivity";
+
+const isAuthenticated = () => {
+  return true;
+};
 
 const Main = () => {
   function PrivateRoute({ component: Component, ...rest }) {
@@ -59,6 +63,8 @@ const Main = () => {
         <Switch>
           {/* The Switch decides which component to show based on the current URL.*/}
           <Route exact path="/" component={Slideshow}></Route>
+          <Route exact path="/Login" component={Login} />
+
           <Route exact path="/AllActivities" component={AllActivities}></Route>
           <Route exact path="/NewActivities" component={NewActivities}></Route>
           <Route
@@ -96,7 +102,6 @@ const Main = () => {
             component={EmployeeRanking}
           ></Route>
           <Route exact path="/TestPage" component={TestPage}></Route>
-          <Route exact path="/login" component={Login}></Route>
           <Route exact path="/EditCurrentCycle" component={EditCurrentCycle} />
           <Route exact path="/AddNewCycle" component={AddNewCycle} />
           <Route
@@ -109,6 +114,7 @@ const Main = () => {
           <Route exact path="/Badges" component={Badges} />
 
           <Route path="*">
+            {/* Make this protected route */}
             <PageNotFound />
           </Route>
         </Switch>

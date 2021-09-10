@@ -4,13 +4,21 @@ import Navbar from "./components/Navbar";
 import Main from "./pages/Main";
 import background from "./Images/bulding_bg_smaller.png";
 
-export default function App() {
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Switch,
+  Route,
+} from "react-router-dom";
+export default function App(props) {
   return (
     <>
-      <div>
-        <Navbar />
-        <Main />
-      </div>
+      <Route
+        render={({ location }) =>
+          ["/login"].includes(location.pathname) ? null : <Navbar />
+        }
+      />
+      <Main />
     </>
   );
 }
