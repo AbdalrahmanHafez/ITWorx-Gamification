@@ -30,53 +30,41 @@ import AddActivity from "./AddActivity";
 const Main = () => {
   const [user, setUser] = useContext(UserContext);
 
+  if (!user.authed) return <Redirect to="/login" />;
+
   return (
     <>
-      <PrivateRoute exact path="/*" component={Navbar} />
-
       <BrowserRouter>
+        <PrivateRoute exact path="/*" component={Navbar} />
         <Switch>
           {/* The Switch decides which component to show based on the current URL.*/}
-          <Route exact path="/" component={Slideshow}></Route>
-          <Route exact path="/Login" component={Login} />
-
-          <Route exact path="/AllActivities" component={AllActivities}></Route>
-          <Route exact path="/NewActivities" component={NewActivities}></Route>
-          <Route
-            exact
-            path="/YourActivities"
-            component={YourActivities}
-          ></Route>
+          <Route exact path="/" component={Slideshow} />
+          <Route exact path="/Login" component={Login} />;
+          <Route exact path="/AllActivities" component={AllActivities} />
+          <Route exact path="/NewActivities" component={NewActivities} />
+          <Route exact path="/YourActivities" component={YourActivities} />
           <Route
             exact
             path="/ActivityView/:activityId"
             component={ActivityView}
-          ></Route>
-          <Route exact path="/Departments" component={Departments}></Route>
-          <Route
-            exact
-            path="/ReviewActivity"
-            component={ReviewActivity}
-          ></Route>
-          <Route exact path="/AddActivity" component={AddActivity}></Route>
-          <Route exact path="/EditBadge" component={EditBadge}></Route>
-          <Route exact path="/CreateBadge" component={CreateBadge}></Route>
+          />
+          <Route exact path="/Departments" component={Departments} />
+          <Route exact path="/ReviewActivity" component={ReviewActivity} />
+          <Route exact path="/AddActivity" component={AddActivity} />
+          <Route exact path="/EditBadge" component={EditBadge} />
+          <Route exact path="/CreateBadge" component={CreateBadge} />
           <Route
             exact
             path="/LeaderBoardPractice"
             component={LeaderBoardPractice}
-          ></Route>
+          />
           <Route
             exact
             path="/LeaderBoardDepartment"
             component={LeaderBoardDepartment}
-          ></Route>
-          <Route
-            exact
-            path="/EmployeeRanking"
-            component={EmployeeRanking}
-          ></Route>
-          <Route exact path="/TestPage" component={TestPage}></Route>
+          />
+          <Route exact path="/EmployeeRanking" component={EmployeeRanking} />
+          <Route exact path="/TestPage" component={TestPage} />
           <Route exact path="/EditCurrentCycle" component={EditCurrentCycle} />
           <Route exact path="/AddNewCycle" component={AddNewCycle} />
           <Route
@@ -84,10 +72,8 @@ const Main = () => {
             path="/ParticipatingEmployees"
             component={ParticipatingEmployees}
           />
-
           <PrivateRoute path="/AddActivity" component={AddActivity} />
           <Route exact path="/Badges" component={Badges} />
-
           <Route path="*">
             <PageNotFound />
           </Route>

@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { NavDropdown, MenuItem } from "react-bootstrap";
 import ProfilePic from "./ProfilePic";
 import { NavLink, Link, Redirect, useHistory } from "react-router-dom";
+import { UserContext } from "../Store";
 
 import ITWorx_logo from "../Images/ITWorx_logo.png";
 
-const isAdmin = true;
-
 const Navbar = () => {
+  const [user, setUser] = useContext(UserContext);
+
   return (
     <div>
       <nav
@@ -36,7 +37,7 @@ const Navbar = () => {
               id="navbarSupportedContent"
             >
               <ul className="navbar-nav nav-left">
-                {isAdmin ? (
+                {user.authed ? (
                   <>
                     <NavDropdown
                       id="nav-dropdown-dark-example"
@@ -161,7 +162,7 @@ const Navbar = () => {
         </div>
         <ProfilePic />
         <span>practice name</span>
-        {isAdmin && <span>Admin</span>}
+        {user.authed && <span>Admin</span>}
       </nav>
     </div>
   );

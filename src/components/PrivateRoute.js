@@ -8,6 +8,6 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   let { authed } = user;
   console.log("private route authed: ", authed);
 
-  return <Route {...rest} component={user.authed ? Component : null} />;
+  return <Route {...rest} component={authed ? Component : null} />;
 };
 export default PrivateRoute;
