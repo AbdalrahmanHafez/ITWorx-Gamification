@@ -1,13 +1,5 @@
-import React from "react";
-import {
-  BrowserRouter as Router,
-  Redirect,
-  Switch,
-  Route,
-} from "react-router-dom";
-
-import Store from "../Store";
-import fakeAuth from "fake-auth";
+import React, { useContext } from "react";
+import { BrowserRouter, Redirect, Switch, Route } from "react-router-dom";
 
 import Slideshow from "./Slideshow";
 import AllActivities from "./AllActivities";
@@ -28,38 +20,21 @@ import EditCurrentCycle from "./EditCurrentCycle";
 import ParticipatingEmployees from "./ParticipatingEmployees";
 import AddNewCycle from "./AddNewCycle";
 import Login from "./Login";
+import Navbar from "../components/Navbar";
+import PrivateRoute from "../components/PrivateRoute";
+import { UserContext } from "../Store";
 
 // Admin
 import AddActivity from "./AddActivity";
 
-const isAuthenticated = () => {
-  return true;
-};
-
 const Main = () => {
-  function PrivateRoute({ component: Component, ...rest }) {
-    return (
-      <Route
-        {...rest}
-        render={(props) =>
-          fakeAuth.isAuthenticated ? (
-            <Component {...props} />
-          ) : (
-            <Redirect
-              to={{
-                pathname: "/login",
-                state: { from: props.location },
-              }}
-            />
-          )
-        }
-      />
-    );
-  }
+  const [user, setUser] = useContext(UserContext);
 
   return (
     <>
-      <Store>
+      <PrivateRoute exact path="/*" component={Navbar} />
+
+      <BrowserRouter>
         <Switch>
           {/* The Switch decides which component to show based on the current URL.*/}
           <Route exact path="/" component={Slideshow}></Route>
@@ -114,11 +89,10 @@ const Main = () => {
           <Route exact path="/Badges" component={Badges} />
 
           <Route path="*">
-            {/* Make this protected route */}
             <PageNotFound />
           </Route>
         </Switch>
-      </Store>
+      </BrowserRouter>
     </>
   );
 };

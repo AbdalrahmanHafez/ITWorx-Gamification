@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 const initialState = {
-  msalInstance: null,
+  authed: false,
 };
-export const AuthContext = React.createContext();
+
+export const UserContext = React.createContext();
 
 const Store = ({ children }) => {
-  const [auth, setauth] = useState(initialState);
+  const [user, setUser] = useState(initialState);
   return (
-    <AuthContext.Provider value={[auth, setauth]}>
+    <UserContext.Provider value={[user, setUser]}>
       {children}
-    </AuthContext.Provider>
+    </UserContext.Provider>
   );
 };
 

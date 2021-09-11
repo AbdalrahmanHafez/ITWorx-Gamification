@@ -1,7 +1,6 @@
 import { React, useState, useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { NavLink, Redirect } from "react-router-dom";
-import { AuthContext } from "../Store";
 
 import axios from "axios";
 
@@ -19,8 +18,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import loginBackground from "../Images/loginBackground.jpg";
-
-//   const [auth, setauth] = useContext(AuthContext);
+import { UserContext } from "../Store";
 
 const loginHandler = () => {
   axios
@@ -62,7 +60,6 @@ const getAdminHandler = () => {
       console.log("Error ========>", error);
     });
 };
-
 const logoutHandler = () => {
   axios
     .post(
@@ -75,19 +72,6 @@ const logoutHandler = () => {
       console.log("Error ========>", error);
     });
 };
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        ITWorx
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -122,7 +106,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const testButton = (setUser) => {
+  console.log("click");
+  setUser({ authed: true });
+};
+
 function Login() {
+  const [user, setUser] = useContext(UserContext);
+
   const classes = useStyles();
 
   return (
@@ -171,6 +162,15 @@ function Login() {
             >
               Sign In
             </Button>
+            <Button
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+              onClick={() => testButton(setUser)}
+            >
+              Test Button
+            </Button>
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">
@@ -184,7 +184,14 @@ function Login() {
               </Grid>
             </Grid>
             <Box mt={5}>
-              <Copyright />
+              <Typography variant="body2" color="textSecondary" align="center">
+                {"Copyright © "}
+                <Link color="inherit" href="https://material-ui.com/">
+                  ITWorx
+                </Link>{" "}
+                {new Date().getFullYear()}
+                {"."}
+              </Typography>
             </Box>
           </form>
         </div>
