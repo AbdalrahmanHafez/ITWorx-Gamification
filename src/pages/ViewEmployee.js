@@ -107,6 +107,7 @@ const ViewEmployee = () => {
                                         <TableCell rowSpan={item.detail.length + 1}>
                                             {item.name}
                                         </TableCell>
+//
                                     </TableRow>
                                     {item.detail.map(detail => (
                                         <TableRow>
