@@ -36,6 +36,7 @@ const Main = () => {
     <>
       <BrowserRouter>
         <PrivateRoute exact path="/*" component={Navbar} />
+        {/* <Route exact path="/*" component={Navbar} /> */}
         <Switch>
           {/* The Switch decides which component to show based on the current URL.*/}
           <Route exact path="/" component={Slideshow} />

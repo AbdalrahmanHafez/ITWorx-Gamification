@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { NavDropdown, MenuItem } from "react-bootstrap";
 import ProfilePic from "./ProfilePic";
@@ -6,9 +6,38 @@ import { NavLink, Link, Redirect, useHistory } from "react-router-dom";
 import { UserContext } from "../Store";
 
 import ITWorx_logo from "../Images/ITWorx_logo.png";
+import EmployeeService from "../services/EmployeeService";
 
 const Navbar = () => {
   const [user, setUser] = useContext(UserContext);
+  const { isAdmin } = user;
+  const getPoints = () => {
+    return EmployeeService.getPoints().then(async (response) => {
+      console.log("Success ========>", response.data);
+
+      setUser((olduser) => {
+        return { ...olduser, points: parseInt(response.data) };
+      });
+    });
+  };
+
+  const getPracticeName = () => {
+    return EmployeeService.getPracticeName()
+      .then((response) => {
+        console.log("Success ========>", response.data);
+        setUser((olduser) => {
+          return { ...olduser, practiceName: response.data };
+        });
+      })
+      .catch((error) => {
+        console.log("Error ========>", error);
+      });
+  };
+
+  useEffect(() => {
+    getPoints();
+    getPracticeName();
+  }, []);
 
   return (
     <div>
@@ -37,7 +66,7 @@ const Navbar = () => {
               id="navbarSupportedContent"
             >
               <ul className="navbar-nav nav-left">
-                {user.authed ? (
+                {isAdmin ? (
                   <>
                     <NavDropdown
                       id="nav-dropdown-dark-example"
@@ -160,9 +189,9 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-        <ProfilePic />
-        <span>practice name</span>
-        {user.authed && <span>Admin</span>}
+        <ProfilePic points={user.points} />
+        <span>{user.practiceName + " Practice"}</span>
+        {isAdmin && <span>Admin</span>}
       </nav>
     </div>
   );

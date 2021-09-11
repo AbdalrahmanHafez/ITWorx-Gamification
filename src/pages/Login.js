@@ -128,7 +128,7 @@ function Login(props) {
     AuthenticationService.signin(email, password, adminLogin)
       .then((response) => {
         console.log("Success ========>", response);
-        setUser({ authed: true });
+        setUser({ authed: true, isAdmin: adminLogin });
         // window.location.href = "http://localhost:3000/";
         // history.push("/");
         props.history.push("/");
