@@ -26,6 +26,7 @@ import PageNotFound from "./PageNotFound";
 import Login from "./Login";
 import EditCurrentCycle from "./EditCurrentCycle";
 import AddNewCycle from "./AddNewCycle";
+import ViewEmployee from "./ViewEmployee";
 
 // Admin
 import AddActivity from "./AddActivity";
@@ -98,6 +99,7 @@ const Main = () => {
           <Route exact path="/login" component={Login}></Route>
           <Route exact path="/EditCurrentCycle" component={EditCurrentCycle} />
           <Route exact path="/AddNewCycle" component={AddNewCycle} />
+          <Route exact path="/ViewEmployee" component={ViewEmployee} />
           <PrivateRoute path="/AddActivity" component={AddActivity} />
 
           <Route path="*">

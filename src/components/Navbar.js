@@ -103,7 +103,7 @@ const Navbar = () => {
                       <NavDropdown.Item as={Link} to="/AddNewCycle">
                         Add New Cycle
                       </NavDropdown.Item>
-                      <NavDropdown.Item as={Link} to="/ParticipatingEmployees">
+                      <NavDropdown.Item as={Link} to="/ViewEmployee">
                         Participating Employees
                       </NavDropdown.Item>
                     </NavDropdown>
