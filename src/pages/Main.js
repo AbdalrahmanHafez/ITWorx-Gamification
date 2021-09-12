@@ -19,14 +19,11 @@ import PageNotFound from "./PageNotFound";
 import EditCurrentCycle from "./EditCurrentCycle";
 import ParticipatingEmployees from "./ParticipatingEmployees";
 import AddNewCycle from "./AddNewCycle";
-<<<<<<< HEAD
-import ViewEmployee from "./ViewEmployee";
-=======
+
 import Login from "./Login";
 import Navbar from "../components/Navbar";
 import PrivateRoute from "../components/PrivateRoute";
 import { UserContext } from "../Store";
->>>>>>> 75fb8c054dde978e69f1eb265aa33785e7662408
 
 // Admin
 import AddActivity from "./AddActivity";
