@@ -12,7 +12,7 @@ const Navbar = () => {
   const [user, setUser] = useContext(UserContext);
   const { isAdmin } = user;
   const getPoints = () => {
-    return EmployeeService.getPoints().then(async (response) => {
+    return EmployeeService.getPoints().then((response) => {
       console.log("Success ========>", response.data);
 
       setUser((olduser) => {
