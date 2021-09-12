@@ -1,55 +1,21 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import ActivitieService from "../services/ActivityService";
-import Table from "../components/Table";
-import axios from "axios";
+import { UserContext } from "../Store";
 
-const AllActivities = () => {
-  const setRows = () => {
-    return ActivitieService.getAll().then((res) => {
-      const result = res.data.map((obj, i) => ({
-        id: i,
-        name: obj.name,
-        description: obj.description,
-        points: obj.totalPoints,
-        moreinfo: "moreinfo",
-      }));
-      //   console.log("result", result);
-      return result;
-    });
-  };
-
-  const columns = [
-    {
-      field: "name",
-      headerName: "Name",
-      width: 225,
-    },
-    {
-      field: "description",
-      headerName: "Description",
-      width: 500,
-    },
-    {
-      field: "points",
-      headerName: "Points",
-      width: 120,
-    },
-    {
-      field: "moreinfo",
-      headerName: "More Info",
-      description: "This column has a value getter and is not sortable.",
-      sortable: false,
-      width: 125,
-      // valueGetter: (params) =>
-      //   `${params.getValue(params.id, "firstName") || ""} ${
-      //     params.getValue(params.id, "lastName") || ""
-      //   }`
-    },
-  ];
-
-  //   return <h2>{data}</h2>;
-  return <Table name="All Activities" columns={columns} onMount={setRows} />;
+const testButton = (setUser) => {
+  console.log("click");
+  setUser({ authed: true });
 };
 
-export default AllActivities;
+const TestPage = () => {
+  const [user, setUser] = useContext(UserContext);
+
+  return (
+    <>
+      <h1>{JSON.stringify(user)}</h1>
+      <button onClick={() => testButton(setUser)}> test</button>
+    </>
+  );
+};
+
+export default TestPage;

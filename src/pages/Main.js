@@ -1,12 +1,5 @@
-import React from "react";
-import {
-  BrowserRouter as Router,
-  Redirect,
-  Switch,
-  Route,
-} from "react-router-dom";
-import Store from "../Store";
-import fakeAuth from "fake-auth";
+import React, { useContext } from "react";
+import { BrowserRouter, Redirect, Switch, Route } from "react-router-dom";
 
 import Slideshow from "./Slideshow";
 import AllActivities from "./AllActivities";
@@ -23,41 +16,34 @@ import LeaderBoardPractice from "./LeaderBoardPractice";
 import Badges from "./Badges";
 import TestPage from "./TestPage";
 import PageNotFound from "./PageNotFound";
-import Login from "./Login";
 import EditCurrentCycle from "./EditCurrentCycle";
+import ParticipatingEmployees from "./ParticipatingEmployees";
 import AddNewCycle from "./AddNewCycle";
+<<<<<<< HEAD
 import ViewEmployee from "./ViewEmployee";
+=======
+import Login from "./Login";
+import Navbar from "../components/Navbar";
+import PrivateRoute from "../components/PrivateRoute";
+import { UserContext } from "../Store";
+>>>>>>> 75fb8c054dde978e69f1eb265aa33785e7662408
 
 // Admin
 import AddActivity from "./AddActivity";
 
 const Main = () => {
-  function PrivateRoute({ component: Component, ...rest }) {
-    return (
-      <Route
-        {...rest}
-        render={(props) =>
-          fakeAuth.isAuthenticated ? (
-            <Component {...props} />
-          ) : (
-            <Redirect
-              to={{
-                pathname: "/login",
-                state: { from: props.location },
-              }}
-            />
-          )
-        }
-      />
-    );
-  }
+  const [user, setUser] = useContext(UserContext);
 
   return (
     <>
-      <Store>
+      <PrivateRoute exact path="/*" component={Navbar} />
+
+      <BrowserRouter>
         <Switch>
           {/* The Switch decides which component to show based on the current URL.*/}
           <Route exact path="/" component={Slideshow}></Route>
+          <Route exact path="/Login" component={Login} />
+
           <Route exact path="/AllActivities" component={AllActivities}></Route>
           <Route exact path="/NewActivities" component={NewActivities}></Route>
           <Route
@@ -94,19 +80,23 @@ const Main = () => {
             path="/EmployeeRanking"
             component={EmployeeRanking}
           ></Route>
-          <Route exact path="/Badges" component={Badges}></Route>
           <Route exact path="/TestPage" component={TestPage}></Route>
-          <Route exact path="/login" component={Login}></Route>
           <Route exact path="/EditCurrentCycle" component={EditCurrentCycle} />
           <Route exact path="/AddNewCycle" component={AddNewCycle} />
-          <Route exact path="/ViewEmployee" component={ViewEmployee} />
+          <Route
+            exact
+            path="/ParticipatingEmployees"
+            component={ParticipatingEmployees}
+          />
+
           <PrivateRoute path="/AddActivity" component={AddActivity} />
+          <Route exact path="/Badges" component={Badges} />
 
           <Route path="*">
             <PageNotFound />
           </Route>
         </Switch>
-      </Store>
+      </BrowserRouter>
     </>
   );
 };

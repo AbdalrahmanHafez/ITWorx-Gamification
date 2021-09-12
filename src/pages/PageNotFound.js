@@ -2,10 +2,11 @@ import { React, useState, useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button } from "react-bootstrap";
 import { Link, NavLink, Redirect } from "react-router-dom";
-import { AuthContext } from "../Store";
+import axios from "axios";
+import { UserContext } from "../Store";
 
 const PageNotFound = () => {
-  const [auth, setauth] = useContext(AuthContext);
+  const usercxt = useContext(UserContext);
 
   return (
     <div className="container my-5">

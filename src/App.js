@@ -2,15 +2,12 @@ import "./styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./components/Navbar";
 import Main from "./pages/Main";
-import background from "./Images/bulding_bg_smaller.png";
+import Store from "./Store";
 
-export default function App() {
+export default function App(props) {
   return (
-    <>
-      <div>
-        <Navbar />
-        <Main />
-      </div>
-    </>
+    <Store>
+      <Main />
+    </Store>
   );
 }
