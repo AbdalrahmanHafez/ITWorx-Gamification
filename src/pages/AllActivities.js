@@ -23,6 +23,11 @@ const AllActivities = () => {
       width: 120,
     },
     {
+      field: "virtualRecognition",
+      headerName: "VR",
+      width: 120,
+    },
+    {
       field: "",
       headerName: "More info",
       sortable: false,
@@ -44,13 +49,15 @@ const AllActivities = () => {
   ];
 
   const setRows = async () => {
-    return ActivitieService.getAll().then((res) => {
+    return ActivitieService.getInfoAll().then((res) => {
+      console.log("response ", res);
       allActivities = res.data;
       const result = res.data.map((obj, i) => ({
         id: obj.id,
         name: obj.name,
         description: obj.description,
         points: obj.totalPoints,
+        virtualRecognition: obj.virtualRecognition,
         moreinfo: <Link href="/">Link</Link>,
       }));
       console.log("result", result);

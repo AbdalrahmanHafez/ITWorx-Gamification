@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 const initialState = {
   authed: false,
+  isAdmin: false,
+  points: 0,
+  practiceName: "",
 };
 
 export const UserContext = React.createContext();

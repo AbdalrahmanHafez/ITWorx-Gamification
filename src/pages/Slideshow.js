@@ -1,6 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Carousel, Button } from "react-bootstrap";
+import { NavLink, Link, Redirect, useHistory } from "react-router-dom";
 
 const Slideshow = () => {
   return (
@@ -37,7 +38,7 @@ const Slideshow = () => {
                         <td>Interview 5 New Employees</td>
                         <td>50</td>
                         <td>
-                          <a href="">more info</a>
+                          <Link to="/ActivityView/1">more info</Link>
                         </td>
                       </tr>
                       <tr>
@@ -45,7 +46,7 @@ const Slideshow = () => {
                         <td>Create New Theme for the company website</td>
                         <td>46</td>
                         <td>
-                          <a href="">more info</a>
+                          <Link to="">more info</Link>
                         </td>
                       </tr>
                       <tr>
@@ -53,19 +54,19 @@ const Slideshow = () => {
                         <td>these damn bugs</td>
                         <td>20</td>
                         <td>
-                          <a href="">more info</a>
+                          <Link to="">more info</Link>
                         </td>
                       </tr>
                     </tbody>
                   </table>{" "}
                 </p>
-                <a
-                  href="#"
+                <Link
+                  to="/AllActivities"
                   class="btn btn-primary"
                   style={{ backgroundColor: "#3a73b5" }}
                 >
                   View All Activities
-                </a>
+                </Link>
               </div>
             </div>
           </Carousel.Caption>
@@ -120,13 +121,13 @@ const Slideshow = () => {
                     </tbody>
                   </table>{" "}
                 </p>
-                <a
-                  href="#"
+                <Link
+                  to="/EmployeeRanking"
                   class="btn btn-primary"
                   style={{ backgroundColor: "#3a73b5" }}
                 >
                   Go To All Leader Boards
-                </a>
+                </Link>
               </div>
             </div>
           </Carousel.Caption>

@@ -5,12 +5,12 @@ class EmployeeService {
     return http.get("/EmployeeRanking");
   }
 
-  get(id) {
-    return http.get(`/employee/${id}`);
+  getPoints() {
+    return http.get(`/employee/points`, { withCredentials: true });
   }
 
-  create(data) {
-    return http.post("/employee", data);
+  getPracticeName() {
+    return http.get("/employee/getPracticeName", { withCredentials: true });
   }
 
   update(id, data) {

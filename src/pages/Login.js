@@ -1,6 +1,7 @@
 import { React, useState, useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { NavLink, Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import axios from "axios";
 
@@ -19,6 +20,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import loginBackground from "../Images/loginBackground.jpg";
 import { UserContext } from "../Store";
+import AuthenticationService from "../services/AuthenticationService";
 
 const loginHandler = () => {
   axios
@@ -106,13 +108,35 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const testButton = (setUser) => {
-  console.log("click");
-  setUser({ authed: true });
-};
+function Login(props) {
+  console.log(props);
 
-function Login() {
   const [user, setUser] = useContext(UserContext);
+  const [adminLogin, setadminLogin] = useState(false);
+
+  const lblAdminClick = () => {
+    if (adminLogin) setadminLogin(false);
+    else setadminLogin(true);
+  };
+
+  const handleSubmit = (event) => {
+    console.log(user);
+    event.preventDefault();
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+    console.log("logging", email, password);
+    AuthenticationService.signin(email, password, adminLogin)
+      .then((response) => {
+        console.log("Success ========>", response);
+        setUser({ authed: true, isAdmin: adminLogin });
+        // window.location.href = "http://localhost:3000/";
+        // history.push("/");
+        props.history.push("/");
+      })
+      .catch((error) => {
+        console.log("Error ========>", error);
+      });
+  };
 
   const classes = useStyles();
 
@@ -126,9 +150,9 @@ function Login() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            {adminLogin ? "Admin Sign in" : "Sing in"}
           </Typography>
-          <form className={classes.form} noValidate>
+          <form className={classes.form} noValidate onSubmit={handleSubmit}>
             <TextField
               margin="normal"
               required
@@ -160,16 +184,7 @@ function Login() {
               color="primary"
               className={classes.submit}
             >
-              Sign In
-            </Button>
-            <Button
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-              onClick={() => testButton(setUser)}
-            >
-              Test Button
+              Sing in
             </Button>
             <Grid container>
               <Grid item xs>
@@ -183,10 +198,18 @@ function Login() {
                 </Link>
               </Grid>
             </Grid>
+            <Grid container>
+              <Grid item xs></Grid>
+              <Grid item>
+                <Link href="#" variant="body2" onClick={lblAdminClick}>
+                  {adminLogin ? "Employee Login?" : "Admin Login?"}
+                </Link>
+              </Grid>
+            </Grid>
             <Box mt={5}>
               <Typography variant="body2" color="textSecondary" align="center">
                 {"Copyright © "}
-                <Link color="inherit" href="https://material-ui.com/">
+                <Link color="inherit" href="http://localhost:3000/">
                   ITWorx
                 </Link>{" "}
                 {new Date().getFullYear()}
