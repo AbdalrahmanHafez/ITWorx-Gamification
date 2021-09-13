@@ -3,14 +3,11 @@ import { DataGrid } from "@material-ui/data-grid";
 import "bootstrap/dist/css/bootstrap.min.css";
 import DepartmentService from "../services/DepartmentService";
 import Table from "../components/Table";
-import { ExportCSV } from './ExportCSV';
-
+import { ExportCSV } from "../components/ExportCSV";
 
 const LeaderBoardDepartment = () => {
-  const handleSearch = (event) => {
-    const value = event.target.value;
-    console.log(value);
-  };
+  const [data, setdata] = useState({});
+
   const columns = [
     {
       field: "name",
@@ -33,28 +30,29 @@ const LeaderBoardDepartment = () => {
         points: obj.points,
       }));
       console.log("result", result);
+
+      setdata(result);
+
       return result;
     });
   };
 
   const fileName = "Test";
-  const viewers = [
-    {
-      id: 1,
-      name: "Activity 1",
-      pointss: 30
-    },
-    {
-      id: 2,
-      name: "Activity 2",
-      pointss: 20
-    }
-  ]
-
+  // const viewers = [
+  //   {
+  //     id: 1,
+  //     name: "Activity 1",
+  //     pointss: 30
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "Activity 2",
+  //     pointss: 20
+  //   }
+  // ]
 
   return (
     <>
-      <ExportCSV csvData={viewers} fileName={fileName} />
       <div
         style={{
           width: "50%",
@@ -66,6 +64,9 @@ const LeaderBoardDepartment = () => {
           columns={columns}
           onMount={setRows}
         />
+      </div>
+      <div className="pb-5 me-3" style={{ textAlign: "right" }}>
+        <ExportCSV csvData={data} fileName={fileName} />
       </div>
     </>
   );

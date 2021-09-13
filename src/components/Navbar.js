@@ -183,14 +183,22 @@ const Navbar = () => {
                         Badges
                       </Link>
                     </li>
+                    <li className="nav-item">
+                      <Link
+                        className="link nav-link active"
+                        to="/ParticipatingEmployees"
+                      >
+                        Participating Employees
+                      </Link>
+                    </li>
                   </>
                 )}
               </ul>
             </div>
           </div>
         </div>
-        <ProfilePic points={user.points} />
-        <span>{user.practiceName + " Practice"}</span>
+        {!isAdmin && <ProfilePic points={user.points} />}
+        {!isAdmin && <span>user.practiceName + " Practice"</span>}
         {isAdmin && <span>Admin</span>}
       </nav>
     </div>

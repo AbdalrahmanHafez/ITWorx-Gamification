@@ -8,22 +8,36 @@ import ActivityService from "../services/ActivityService";
 
 // you can use ActivityView = ({match}) instead
 const ActivityView = (props) => {
+  const [subscribed, setsubscibed] = useState(false);
   let { activityId } = useParams();
   console.log("activity id from url", activityId);
   const { allActivities } = props.location;
   const [actInfo, setactInfo] = useState({});
   if (allActivities) {
     // From more info link
-    actInfo = allActivities.filter((activity) => activity.id == activityId)[0];
+    console.log("loadign from cached activites");
+    setactInfo(
+      allActivities.filter((activity) => activity.id == activityId)[0]
+    );
   } else {
+    useEffect(() => {
+      console.log("sending ?");
+      ActivityService.getInfo({ id: activityId })
+        .then((response) => {
+          console.log("Success ========>", response);
+          setactInfo(response.data);
+        })
+        .catch((err) => console.log("Error ===<", err));
+    }, []);
   }
 
   useEffect(() => {
-    console.log("sending ?");
-    ActivityService.getInfo({ id: activityId })
+    // Is subscribed
+
+    ActivityService.querySubscibed({ id: activityId })
       .then((response) => {
         console.log("Success ========>", response);
-        setactInfo(response.data);
+        setsubscibed(response.data);
       })
       .catch((err) => console.log("Error ===<", err));
   }, []);
@@ -33,6 +47,28 @@ const ActivityView = (props) => {
   const handleSubscribe = () => {
     // TODO: Axios subscibe to activity by id
     const { id } = actInfo;
+
+    ActivityService.subscribe({ id: id })
+      .then((response) => {
+        console.log("Success ========>", response);
+        if (response.status === 200) {
+          setsubscibed(true);
+        }
+      })
+      .catch((err) => console.log("Error ===<", err));
+  };
+  const handleUnSubscribe = () => {
+    // TODO: Axios subscibe to activity by id
+    const { id } = actInfo;
+
+    ActivityService.unsubscribe({ id: id })
+      .then((response) => {
+        console.log("Success ========>", response);
+        if (response.status === 200) {
+          setsubscibed(false);
+        }
+      })
+      .catch((err) => console.log("Error ===<", err));
   };
 
   let {
@@ -81,12 +117,22 @@ const ActivityView = (props) => {
               method="POST"
               style={{ fontWeight: "bold", fontSize: "110%" }}
             >
-              <Button
-                onClick={handleSubscribe}
-                className="mt-5 w-100 subscribee"
-              >
-                Subscribe
-              </Button>
+              {subscribed ? (
+                <Button
+                  onClick={handleUnSubscribe}
+                  className="mt-5 w-100 subscribee"
+                >
+                  Un-Subscribe
+                </Button>
+              ) : (
+                <Button
+                  onClick={handleSubscribe}
+                  className="mt-5 w-100 subscribee"
+                >
+                  Subscribe
+                </Button>
+              )}
+
               <input
                 type="hidden"
                 id="activityId"
@@ -98,9 +144,7 @@ const ActivityView = (props) => {
           </Card>
         </div>
       </div>
-      <div className="w-50 mx-auto">
-        <ParticipatingEmployees />
-      </div>
+      <div className="w-50 mx-auto">{/* <ParticipatingEmployees /> */}</div>
     </>
   );
 };

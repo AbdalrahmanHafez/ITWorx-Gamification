@@ -150,7 +150,7 @@ function Login(props) {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            {adminLogin ? "Admin Sign in" : "Sing in"}
+            {adminLogin ? "Admin Sign in" : "Sign in"}
           </Typography>
           <form className={classes.form} noValidate onSubmit={handleSubmit}>
             <TextField
@@ -184,7 +184,7 @@ function Login(props) {
               color="primary"
               className={classes.submit}
             >
-              Sing in
+              Sign in
             </Button>
             <Grid container>
               <Grid item xs>

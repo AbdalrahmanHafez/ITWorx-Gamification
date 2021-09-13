@@ -16,6 +16,17 @@ class ActivityService {
   getInfo(data) {
     return http.post("/activity/getInfo", data);
   }
+
+  subscribe(data) {
+    return http.post("/activity/subscribe", data);
+  }
+  unsubscribe(data) {
+    return http.post("/activity/unsubscribe", data);
+  }
+
+  querySubscibed(data) {
+    return http.post("/activity/querySubscibed", data);
+  }
 }
 
 export default new ActivityService();
