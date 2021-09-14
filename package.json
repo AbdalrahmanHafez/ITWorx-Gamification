@@ -13,6 +13,7 @@
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.60",
     "bootstrap": "5.1.0",
+    "js-cookie": "^3.0.1",
     "material-ui": "0.20.2",
     "mdb-ui-kit": "3.9.0",
     "react": "17.0.2",

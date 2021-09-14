@@ -2,15 +2,15 @@ import http from "./http-common";
 
 class ActivityService {
   getInfoAll() {
-    return http.get("activity/getInfoAll");
+    return http.get("/activity/getInfoAll");
   }
 
   getNew() {
-    return http.get("/NewActivities");
+    return http.get("/activity/getNew");
   }
 
   getYours(data) {
-    return http.post("/YourActivities", data);
+    return http.post("/activity/getYours", data);
   }
 
   getInfo(data) {
@@ -26,6 +26,16 @@ class ActivityService {
 
   querySubscibed(data) {
     return http.post("/activity/querySubscibed", data);
+  }
+
+  getNeedsReview() {
+    return http.get("/activity/getNeedsReview");
+  }
+  getDoneReview() {
+    return http.get("/activity/getDoneReview");
+  }
+  setAcception(data) {
+    return http.post("/activity/setAcception", data);
   }
 }
 

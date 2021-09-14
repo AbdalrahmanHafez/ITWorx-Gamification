@@ -2,7 +2,7 @@ import http from "./http-common";
 
 class EmployeeService {
   getRanking() {
-    return http.get("/EmployeeRanking");
+    return http.get("/employee/EmployeeRanking");
   }
 
   getPoints() {
@@ -11,6 +11,12 @@ class EmployeeService {
 
   getPracticeName() {
     return http.get("/employee/getPracticeName", { withCredentials: true });
+  }
+
+  getParticipatingEmployees() {
+    return http.get("/employee/getParticipatingEmployees", {
+      withCredentials: true,
+    });
   }
 
   update(id, data) {

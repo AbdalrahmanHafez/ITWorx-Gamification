@@ -24,6 +24,7 @@ import Login from "./Login";
 import Navbar from "../components/Navbar";
 import PrivateRoute from "../components/PrivateRoute";
 import { UserContext } from "../Store";
+import Cookies from "js-cookie";
 
 // Admin
 import AddActivity from "./AddActivity";
@@ -31,7 +32,12 @@ import AddActivity from "./AddActivity";
 const Main = () => {
   const [user, setUser] = useContext(UserContext);
 
-  if (!user.authed) return <Redirect to="/login" />;
+  if (Cookies.get("auth") == undefined) {
+    return <Redirect to="/login" />;
+  } else {
+    user.authed = true;
+  }
+  // if (!user.authed) return <Redirect to="/login" />;
 
   return (
     <>
