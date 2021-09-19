@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import Table from "../components/Table";
 import CycleService from "../services/CycleService";
+
 const AddNewCycle = () => {
   // name, adminid, startDate, endDate
   return (

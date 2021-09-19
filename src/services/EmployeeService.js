@@ -5,6 +5,10 @@ class EmployeeService {
     return http.get("/employee/EmployeeRanking");
   }
 
+  getDevelopersRanking() {
+    return http.get("/employee/DevelopersRanking");
+  }
+
   getPoints() {
     return http.get(`/employee/points`, { withCredentials: true });
   }
