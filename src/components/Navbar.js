@@ -133,7 +133,7 @@ const Navbar = () => {
                       <NavDropdown.Item as={Link} to="/AddNewCycle">
                         Add New Cycle
                       </NavDropdown.Item>
-                      <NavDropdown.Item as={Link} to="/ViewEmployee">
+                      <NavDropdown.Item as={Link} to="/ParticipatingEmployees">
                         Participating Employees
                       </NavDropdown.Item>
                     </NavDropdown>
@@ -181,14 +181,6 @@ const Navbar = () => {
                     <li className="nav-item">
                       <Link className="link nav-link active" to="/Badges">
                         Badges
-                      </Link>
-                    </li>
-                    <li className="nav-item">
-                      <Link
-                        className="link nav-link active"
-                        to="/ParticipatingEmployees"
-                      >
-                        Participating Employees
                       </Link>
                     </li>
                   </>

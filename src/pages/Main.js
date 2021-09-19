@@ -75,7 +75,7 @@ const Main = () => {
           <Route exact path="/TestPage" component={TestPage} />
           <Route exact path="/EditCurrentCycle" component={EditCurrentCycle} />
           <Route exact path="/AddNewCycle" component={AddNewCycle} />
-          <Route
+          <PrivateRoute
             exact
             path="/ParticipatingEmployees"
             component={ParticipatingEmployees}

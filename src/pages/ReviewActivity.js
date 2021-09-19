@@ -43,6 +43,7 @@ const ReviewActivity = () => {
       empId: data.employee.id,
       eventType: eventType,
     };
+
     ActivityService.setAcception(postData)
       .then((response) => {
         console.log("Success ========>", response.data);
@@ -52,19 +53,39 @@ const ReviewActivity = () => {
         console.log("Error3 =====<", error);
       });
   };
-  const handleButtonClick = (data, eventType, e) => {
+  const handleButtonClick = (e, data, eventType) => {
     console.log("handling ", data.activity, data.employee);
     let updateView = function () {};
     if (eventType === "accept") {
-      updateView = function () {
-        // move the Activtiy box from Waiting to Done
-        setWaitingData(
-          waitingData.filter((elm) => elm.activity.id != data.activity.id)
-        );
-        setDoneData([{ ...doneData, data }]);
-      };
-    } else e.currentTarget.className = "outline-success";
+      console.log("accepting");
+      // move the Activtiy box from Waiting to Done
+      setWaitingData((prevData) =>
+        prevData.filter(
+          (elm) =>
+            elm.activity.id != data.activity.id ||
+            elm.employee.id != data.employee.id
+        )
+      );
+      console.log("data before", data);
+      console.log("doneData before", doneData);
+      // setDoneData((prevData) => prevData.push(data));
+      setDoneData((prevData) => [...prevData, data]);
+    } else {
+      console.log("un -- accepting");
+      setDoneData((prevData) =>
+        prevData.filter(
+          (elm) =>
+            elm.activity.id != data.activity.id ||
+            elm.employee.id != data.employee.id
+        )
+      );
 
+      setWaitingData((prevData) => [...prevData, data]);
+    }
+
+    // e.currentTarget.className = "outline-success"
+
+    console.log("done state", doneData);
     handleAcception(data, eventType, updateView);
   };
 
@@ -174,24 +195,24 @@ const ActivityBox = (props) => {
         <Col xs="auto">
           <Button
             eventKey={7}
-            variant={props.Done ? "success" : "outline-success"}
+            variant={
+              props.DoneBox
+                ? props.activity
+                  ? "success"
+                  : "outline-dark"
+                : "outline-dark"
+            }
             size="lg"
-            // onClick={() => props.clickHandler( Activity )}
             onClick={(e) =>
               props.clickHandler(
+                e,
                 { activity: props.activity, employee: props.employee },
-                props.DoneBox ? "unaccept" : "accept",
-                e
+                props.DoneBox ? "unaccept" : "accept"
               )
             }
           >
             ✔
-          </Button>{" "}
-          {!props.DoneBox && (
-            <Button variant="outline-dark" size="lg">
-              Skip
-            </Button>
-          )}
+          </Button>
           <Link
             to={"/ActivityView/" + (props.activity ? props.activity.id : "")}
           >

@@ -34,8 +34,8 @@ const EditBadge = () => {
         }}
       >
         <Form
-          method="post"
-          action="http://localhost:8080/EditBadge"
+          method="POST"
+          action="http://localhost:8080/badge/EditBadge"
           className="container px-5 mb-4"
           style={{ fontWeight: "bold", fontSize: "110%" }}
         >

@@ -26,7 +26,7 @@ const CreateBadge = () => {
         <h1 className="m-5">Add New Badge</h1>
         <Form
           className="container px-5 mb-4 "
-          action="http://localhost:8080/CreateBadge"
+          action="http://localhost:8080/badge/CreateBadge"
           method="POST"
           style={{ fontWeight: "bold", fontSize: "110%" }}
         >

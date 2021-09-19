@@ -42,7 +42,7 @@ const ParticipatingEmployees = () => {
     return EmployeeService.getParticipatingEmployees().then((res) => {
       allActivities = res.data;
       const result = res.data.map((obj, i) => ({
-        id: obj.id,
+        id: i,
         EmployeeName: obj.EmployeeName,
         ActivityName: obj.ActivityName,
         ActivityPoints: obj.points,
