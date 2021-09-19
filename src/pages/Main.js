@@ -1,6 +1,5 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { BrowserRouter, Redirect, Switch, Route } from "react-router-dom";
-
 import Slideshow from "./Slideshow";
 import AllActivities from "./AllActivities";
 import NewActivities from "./NewActivities";
@@ -25,6 +24,7 @@ import Navbar from "../components/Navbar";
 import PrivateRoute from "../components/PrivateRoute";
 import { UserContext } from "../Store";
 import Cookies from "js-cookie";
+import jwt from "jsonwebtoken";
 
 // Admin
 import AddActivity from "./AddActivity";
@@ -32,12 +32,19 @@ import AddActivity from "./AddActivity";
 const Main = () => {
   const [user, setUser] = useContext(UserContext);
 
-  if (Cookies.get("auth") == undefined) {
+  let authcookie = Cookies.get("auth");
+  if (authcookie == undefined) {
+    // window.location.replace("/login");
     return <Redirect to="/login" />;
   } else {
+    // Don't really know why but this works
+    authcookie = authcookie.slice(2).split(".").slice(0, 3).join(".");
+    const { isAdmin } = jwt.verify(authcookie, "gutreohwgcrewp");
+
+    // setUser({ ...user, authed: true, isAdmin: isAdmin });
     user.authed = true;
+    user.isAdmin = isAdmin;
   }
-  // if (!user.authed) return <Redirect to="/login" />;
 
   return (
     <>

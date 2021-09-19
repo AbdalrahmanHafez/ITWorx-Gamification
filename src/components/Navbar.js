@@ -35,8 +35,10 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    getPoints();
-    getPracticeName();
+    if (!user.isAdmin) {
+      getPoints();
+      getPracticeName();
+    }
   }, []);
 
   return (

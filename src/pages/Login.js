@@ -109,8 +109,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Login(props) {
-  console.log(props);
-
   const [user, setUser] = useContext(UserContext);
   const [adminLogin, setadminLogin] = useState(false);
 
