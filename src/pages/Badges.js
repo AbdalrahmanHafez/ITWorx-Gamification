@@ -17,7 +17,7 @@ const Badges = () => {
   const [allBadges, setAllBadges] = useState([]);
   useEffect(() => {
     // TODO: employee id
-    BadgeService.getAll({ employeeId: 1 }).then((res) => {
+    BadgeService.getAll().then((res) => {
       console.log(res.data);
       setAllBadges(
         res.data.map((obj, i) => ({

@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, createRef } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   Form,
@@ -8,18 +8,70 @@ import {
   Row,
   Col,
 } from "react-bootstrap";
+import BadgeService from "../services/BadgeService";
 
 const EditBadge = () => {
   //  Name, Description, Type, Points Needed, Enabled
   const [isFormHidden, setIsFormHidden] = useState(true);
   const [selectedBadgeId, setselectedBadgeId] = useState("");
   const [selectedBadgeName, setSelectedBadgeName] = useState("Select Badge");
+  const [badges, setbadges] = useState([]);
+  const editBadgeForm = createRef();
+
+  useEffect(() => {
+    BadgeService.adminGetBadges()
+      .then((res) => {
+        console.log("success ==> ", res.data);
+        console.log(res.data);
+        setbadges(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  {
+    /* // Active: 1
+      // AdminId: 1
+      // Description: "description"
+      // Name: "badge1"
+      // PointsNeeded: 300
+      // id: 1 */
+  }
+
   const handleSelect = (eventKey, event) => {
+    const id = eventKey;
     console.log("logg_1", eventKey);
     console.log("logg_2", event);
+
+    const badge = badges.filter((badge) => badge.id == id)[0];
+
+    editBadgeForm.current.name.value = badge.Name;
+    editBadgeForm.current.desc.value = badge.Description;
+    editBadgeForm.current.points.value = badge.PointsNeeded;
+    editBadgeForm.current.type.value =
+      badge.isDeveloper == 1 ? "developer" : "nonDeveloper";
+    console.log("badge active", badge.Active);
+    editBadgeForm.current.disabled.checked = badge.Active == 1 ? false : true;
+
     setSelectedBadgeName(event.target.innerText);
     setIsFormHidden(false);
     setselectedBadgeId(eventKey);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const id = selectedBadgeId;
+    const name = e.target.name.value;
+    const desc = e.target.desc.value;
+    const points = e.target.points.value;
+    const type = e.target.type.value;
+    const disabled = e.target.disabled.checked;
+
+    BadgeService.editBadge({ id, name, desc, points, type, disabled })
+      .then((res) => {
+        console.log("success ==> ", res.data);
+        alert("done");
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -34,10 +86,10 @@ const EditBadge = () => {
         }}
       >
         <Form
-          method="POST"
-          action="http://localhost:8080/badge/EditBadge"
           className="container px-5 mb-4"
           style={{ fontWeight: "bold", fontSize: "110%" }}
+          onSubmit={handleSubmit}
+          ref={editBadgeForm}
         >
           <Row className="align-items-center">
             <Col>
@@ -52,9 +104,14 @@ const EditBadge = () => {
                   title={selectedBadgeName}
                   onSelect={handleSelect}
                 >
-                  <Dropdown.Item eventKey={1}>100 points Badge</Dropdown.Item>
+                  {badges.map((badge) => (
+                    <Dropdown.Item eventKey={badge.id}>
+                      {badge.Name} ({badge.PointsNeeded})
+                    </Dropdown.Item>
+                  ))}
+                  {/* <Dropdown.Item eventKey={1}>100 points Badge</Dropdown.Item>
                   <Dropdown.Item eventKey={2}>200 points Badge</Dropdown.Item>
-                  <Dropdown.Item eventKey={3}> Developer Badge</Dropdown.Item>
+                  <Dropdown.Item eventKey={3}> Developer Badge</Dropdown.Item> */}
                 </DropdownButton>
                 <input
                   type="hidden"
@@ -68,14 +125,19 @@ const EditBadge = () => {
           <div className={isFormHidden ? "hidden" : ""}>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label className="font-weight-bold">Name</Form.Label>
-              <Form.Control type="name" placeholder="" name="name" />
+              <Form.Control id="name" type="name" placeholder="" name="name" />
             </Form.Group>
             <Form.Group
               className="mb-3"
               controlId="exampleForm.ControlTextarea1"
             >
               <Form.Label>Description</Form.Label>
-              <Form.Control as="textarea" rows={3} name="description" />
+              <Form.Control
+                id="desc"
+                as="textarea"
+                rows={3}
+                name="description"
+              />
             </Form.Group>
             <Row className="g-3">
               <Col xs={10}>
@@ -87,6 +149,7 @@ const EditBadge = () => {
                     Points Needed
                   </Form.Label>
                   <Form.Control
+                    id="points"
                     type="name"
                     placeholder="ex : 300"
                     name="pointsNeeded"
@@ -98,7 +161,7 @@ const EditBadge = () => {
                   <Form.Label className="font-weight-bold pe-2">
                     Type
                   </Form.Label>
-                  <select name="isDeveloper">
+                  <select name="isDeveloper" id="type">
                     <option value="developer">Developer</option>
                     <option value="nonDeveloper">Non Developer</option>
                   </select>
@@ -108,7 +171,7 @@ const EditBadge = () => {
                 <Form.Group className="mb-3">
                   <Form.Check
                     type="checkbox"
-                    id={`default-checkbox`}
+                    id="disabled"
                     label={`Disabled`}
                     name="disabled"
                   />

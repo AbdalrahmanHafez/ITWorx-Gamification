@@ -20,7 +20,7 @@ const CreateBadge = () => {
     const desc = e.target.desc.value;
     const points = e.target.points.value;
     const type = e.target.type.value;
-    const disabled = e.target.disabled.Checked;
+    const disabled = e.target.disabled.checked;
 
     BadgeService.Create({ name, desc, points, type, disabled })
       .then((res) => {
