@@ -1,13 +1,16 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { Form, ListGroup, Row, Col, Card, Button } from "react-bootstrap";
 import { Redirect, Switch, Route, useParams } from "react-router-dom";
 import ParticipatingEmployees from "./ParticipatingEmployees";
 import ActivityService from "../services/ActivityService";
+import { UserContext } from "../Store";
 
 // you can use ActivityView = ({match}) instead
 const ActivityView = (props) => {
+  const [user, setUser] = useContext(UserContext);
+  const { isAdmin } = user;
   const [subscribed, setsubscibed] = useState(false);
   let { activityId } = useParams();
   console.log("activity id from url", activityId);
@@ -117,22 +120,25 @@ const ActivityView = (props) => {
               method="POST"
               style={{ fontWeight: "bold", fontSize: "110%" }}
             >
-              {subscribed ? (
-                <Button
-                  onClick={handleUnSubscribe}
-                  className="mt-5 w-100 subscribee"
-                >
-                  Un-Subscribe
-                </Button>
-              ) : (
-                <Button
-                  onClick={handleSubscribe}
-                  className="mt-5 w-100 subscribee"
-                >
-                  Subscribe
-                </Button>
+              {!isAdmin && (
+                <>
+                  {subscribed ? (
+                    <Button
+                      onClick={handleUnSubscribe}
+                      className="mt-5 w-100 subscribee"
+                    >
+                      Un-Subscribe
+                    </Button>
+                  ) : (
+                    <Button
+                      onClick={handleSubscribe}
+                      className="mt-5 w-100 subscribee"
+                    >
+                      Subscribe
+                    </Button>
+                  )}
+                </>
               )}
-
               <input
                 type="hidden"
                 id="activityId"

@@ -8,10 +8,29 @@ import {
   Row,
   Col,
 } from "react-bootstrap";
+import BadgeService from "../services/BadgeService";
 
 const CreateBadge = () => {
   //  Name, Description, Type, Points Needed, Enabled
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // console.log(e);
 
+    const name = e.target.name.value;
+    const desc = e.target.desc.value;
+    const points = e.target.points.value;
+    const type = e.target.type.value;
+    const disabled = e.target.disabled.Checked;
+
+    BadgeService.Create({ name, desc, points, type, disabled })
+      .then((res) => {
+        console.log("success ==> ", res.data);
+        alert("done");
+      })
+      .catch((err) => console.log(err));
+
+    // e.BadgeService;
+  };
   return (
     <div className="container my-4">
       <div
@@ -26,9 +45,8 @@ const CreateBadge = () => {
         <h1 className="m-5">Add New Badge</h1>
         <Form
           className="container px-5 mb-4 "
-          action="http://localhost:8080/badge/CreateBadge"
-          method="POST"
           style={{ fontWeight: "bold", fontSize: "110%" }}
+          onSubmit={handleSubmit}
         >
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label className="font-weight-bold">Name</Form.Label>
@@ -36,11 +54,12 @@ const CreateBadge = () => {
               type="name"
               placeholder="Interview Employees"
               name="name"
+              id="name"
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
             <Form.Label>Description</Form.Label>
-            <Form.Control as="textarea" rows={3} name="description" />
+            <Form.Control id="desc" as="textarea" rows={3} name="description" />
           </Form.Group>
           <Row className="g-3">
             <Col xs={10}>
@@ -52,6 +71,7 @@ const CreateBadge = () => {
                   Points Needed
                 </Form.Label>
                 <Form.Control
+                  id="points"
                   type="name"
                   placeholder="ex : 300"
                   name="pointsNeeded"
@@ -61,7 +81,7 @@ const CreateBadge = () => {
             <Col md>
               <Form.Group className="mb-3">
                 <Form.Label className="font-weight-bold pe-2">Type</Form.Label>
-                <select name="isDeveloper">
+                <select name="isDeveloper" id="type">
                   <option value="developer">Developer</option>
                   <option value="nonDeveloper">Non Developer</option>
                 </select>
@@ -71,7 +91,7 @@ const CreateBadge = () => {
               <Form.Group className="mb-3">
                 <Form.Check
                   type="checkbox"
-                  id={`default-checkbox`}
+                  id="disabled"
                   label={`Disabled`}
                   name="disabled"
                 />
