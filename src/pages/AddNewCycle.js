@@ -3,9 +3,20 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import Table from "../components/Table";
 import CycleService from "../services/CycleService";
+import AlertMsg from "../components/AlertMsg";
 
 const AddNewCycle = () => {
   // name, adminid, startDate, endDate
+  const [alertOpen, setalertOpen] = useState(false);
+  const [alertMsg, setalertMsg] = useState("");
+  const popUpAlert = (message) => {
+    setalertMsg(message);
+    setalertOpen(true);
+    setTimeout(() => {
+      setalertOpen(false);
+    }, 1000);
+  };
+
   const addCycleForm = useRef(null);
 
   const handleSubmit = (e) => {
@@ -18,7 +29,8 @@ const AddNewCycle = () => {
     CycleService.addNew({ name, startDate, endDate })
       .then((res) => {
         console.log("success ==> ", res.data);
-        alert("done");
+        // alert("done");
+        popUpAlert("Done");
       })
       .catch((err) => console.log(err));
   };
@@ -44,7 +56,13 @@ const AddNewCycle = () => {
           >
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label className="font-weight-bold">Name</Form.Label>
-              <Form.Control id="name" type="name" placeholder="" name="name" />
+              <Form.Control
+                id="name"
+                type="name"
+                placeholder=""
+                name="name"
+                required
+              />
             </Form.Group>
 
             <Row>
@@ -57,6 +75,7 @@ const AddNewCycle = () => {
                   className="mb-2"
                   type="date"
                   name="start_date"
+                  required
                 />
               </Col>
             </Row>
@@ -65,7 +84,12 @@ const AddNewCycle = () => {
                 <Form.Label className="font-weight-bold">Ends on</Form.Label>
               </Col>
               <Col xs={7}>
-                <Form.Control id="endDate" type="date" name="end_date" />
+                <Form.Control
+                  id="endDate"
+                  type="date"
+                  name="end_date"
+                  required
+                />
               </Col>
             </Row>
             <div
@@ -81,6 +105,7 @@ const AddNewCycle = () => {
         </div>
       </div>
       <PlannedCycles />
+      <AlertMsg open={alertOpen} setOpen={setalertOpen} msg={alertMsg} />
     </>
   );
 };
@@ -90,17 +115,17 @@ const PlannedCycles = () => {
     {
       field: "name",
       headerName: "Name",
-      width: 300,
+      flex: 2,
     },
     {
       field: "start_date",
       headerName: "Strats on",
-      width: 150,
+      flex: 1,
     },
     {
       field: "end_date",
       headerName: "Ends on",
-      width: 150,
+      flex: 1,
     },
   ];
 

@@ -17,11 +17,11 @@ const Slideshow = () => {
   return (
     <div
       className="Slideshow"
-      style={{ display: "block", width: "auto", hight: "auto", padding: 30 }}
+      style={{ display: "block", width: "auto", hight: "auto" }}
     >
       <Carousel variant="dark" pause="hover" nextLabel="" prevLabel="">
         <Carousel.Item>
-          <div style={{ height: "105vh" }}></div>
+          <div style={{ height: "110vh" }}></div>
           <Carousel.Caption>
             <p class="card-text">
               <NewActivities />
@@ -37,7 +37,7 @@ const Slideshow = () => {
         </Carousel.Item>
 
         <Carousel.Item>
-          <div style={{ height: "100vh" }}></div>
+          <div style={{ height: "110vh" }}></div>
 
           <Carousel.Caption>
             <p class="card-text">

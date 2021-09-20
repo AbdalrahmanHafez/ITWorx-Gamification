@@ -173,6 +173,7 @@ function Login(props) {
                 name="email"
                 autoComplete="email"
                 autoFocus
+                required
               />
               <TextField
                 margin="normal"
@@ -183,6 +184,7 @@ function Login(props) {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                required
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}

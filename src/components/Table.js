@@ -15,9 +15,9 @@ const Table = (props) => {
 
   return (
     <>
-      <div className="container my-5">
+      <div className="my-5 mx-5 col-10" style={{ width: "auto" }}>
         <div
-          className="card mx-5"
+          className="card"
           style={{
             width: "auto",
             filter: "drop-shadow(0 0 0.2rem #000000)",

@@ -12,12 +12,12 @@ const LeaderBoardNonDeveloper = (props) => {
     {
       field: "name",
       headerName: "Name",
-      width: 350,
+      flex: 2,
     },
     {
       field: "points",
       headerName: "Points",
-      width: 120,
+      flex: 1,
     },
   ];
   const fileName = "Test";
@@ -49,6 +49,7 @@ const LeaderBoardNonDeveloper = (props) => {
           style={{
             width: "50%",
             margin: "auto",
+            position: "relative",
           }}
         >
           <Table
@@ -56,9 +57,16 @@ const LeaderBoardNonDeveloper = (props) => {
             columns={columns}
             onMount={setRows}
           />
-        </div>
-        <div className="pb-5 me-3" style={{ textAlign: "right" }}>
-          <ExportCSV csvData={data} fileName={fileName} />
+          <div
+            className="pb-5 me-3 my-5"
+            style={{
+              position: "absolute",
+              top: "77%",
+              left: "11%",
+            }}
+          >
+            <ExportCSV csvData={data} fileName={fileName} />
+          </div>
         </div>
       </>
     );

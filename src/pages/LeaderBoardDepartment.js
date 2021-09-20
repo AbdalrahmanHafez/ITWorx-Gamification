@@ -12,12 +12,12 @@ const LeaderBoardDepartment = () => {
     {
       field: "name",
       headerName: "Department Name",
-      width: 350,
+      flex: 2,
     },
     {
       field: "points",
       headerName: "Total Points",
-      width: 200,
+      flex: 1,
     },
   ];
 
@@ -57,6 +57,7 @@ const LeaderBoardDepartment = () => {
         style={{
           width: "50%",
           margin: "auto",
+          position: "relative",
         }}
       >
         <Table
@@ -64,9 +65,16 @@ const LeaderBoardDepartment = () => {
           columns={columns}
           onMount={setRows}
         />
-      </div>
-      <div className="pb-5 me-3" style={{ textAlign: "right" }}>
-        <ExportCSV csvData={data} fileName={fileName} />
+        <div
+          className="pb-5 me-3 my-5"
+          style={{
+            position: "absolute",
+            top: "77%",
+            left: "11%",
+          }}
+        >
+          <ExportCSV csvData={data} fileName={fileName} />
+        </div>
       </div>
     </>
   );

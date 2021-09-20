@@ -43,26 +43,27 @@ const YourActivities = () => {
         );
       },
     },
-    {
-      field: "Activity Unsubscribe",
-      headerName: "Un Sub",
-      sortable: false,
-      width: 175,
-      disableClickEventBubbling: true,
-      renderCell: (params) => {
-        return (
-          <Button
-            variant="outline-danger"
-            onClick={() => {
-              handleUnsubscibe(params.row.id);
-            }}
-          >
-            Unsubscribe
-          </Button>
-        );
-      },
-    },
   ];
+
+  // {
+  //   field: "Activity Unsubscribe",
+  //   headerName: "Un Sub",
+  //   sortable: false,
+  //   width: 175,
+  //   disableClickEventBubbling: true,
+  //   renderCell: (params) => {
+  //     return (
+  //       <Button
+  //         variant="outline-danger"
+  //         onClick={() => {
+  //           handleUnsubscibe(params.row.id);
+  //         }}
+  //       >
+  //         Unsubscribe
+  //       </Button>
+  //     );
+  //   },
+  // },
 
   const handleUnsubscibe = (activityId) => {
     // TODO: unsubscribe from activity

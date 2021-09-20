@@ -14,25 +14,25 @@ const ActivityView = (props) => {
   const [subscribed, setsubscibed] = useState(false);
   let { activityId } = useParams();
   console.log("activity id from url", activityId);
-  const { allActivities } = props.location;
+  // const { allActivities } = props.location;
   const [actInfo, setactInfo] = useState({});
-  if (allActivities) {
-    // From more info link
-    console.log("loadign from cached activites");
-    setactInfo(
-      allActivities.filter((activity) => activity.id == activityId)[0]
-    );
-  } else {
-    useEffect(() => {
-      console.log("sending ?");
-      ActivityService.getInfo({ id: activityId })
-        .then((response) => {
-          console.log("Success ========>", response);
-          setactInfo(response.data);
-        })
-        .catch((err) => console.log("Error ===<", err));
-    }, []);
-  }
+  // if (allActivities) {
+  //   // From more info link
+  //   console.log("loadign from cached activites");
+  //   setactInfo(
+  //     allActivities.filter((activity) => activity.id == activityId)[0]
+  //   );
+  // } else {
+  useEffect(() => {
+    console.log("sending ?");
+    ActivityService.getInfo({ id: activityId })
+      .then((response) => {
+        console.log("Success ========>", response);
+        setactInfo(response.data);
+      })
+      .catch((err) => console.log("Error ===<", err));
+  }, []);
+  // }
 
   useEffect(() => {
     // Is subscribed

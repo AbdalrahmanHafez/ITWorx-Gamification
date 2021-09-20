@@ -9,32 +9,32 @@ const ParticipatingEmployees = () => {
     {
       field: "EmployeeName",
       headerName: "Employee Name",
-      width: 200,
+      flex: 3,
     },
     {
       field: "ActivityName",
       headerName: "Activity Name",
-      width: 200,
+      flex: 3,
     },
     {
       field: "ActivityPoints",
       headerName: "Points",
-      width: 150,
+      flex: 2,
     },
     {
       field: "TotalPoints",
       headerName: "Total Points",
-      width: 200,
+      flex: 3,
     },
     {
       field: "Badges",
       headerName: "Badges",
-      width: 150,
+      flex: 2,
     },
     {
       field: "VirtualRecognition",
       headerName: "VR",
-      width: 100,
+      flex: 1.25,
     },
   ];
 

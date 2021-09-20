@@ -25,9 +25,9 @@ export default function AlertMsg(props) {
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      {/* <Button variant="outlined" onClick={handleClickOpen}>
         Slide in alert dialog
-      </Button>
+      </Button> */}
       <Dialog
         open={props.open}
         TransitionComponent={Transition}

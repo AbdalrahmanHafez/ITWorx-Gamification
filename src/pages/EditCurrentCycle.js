@@ -2,10 +2,21 @@ import { React, useState, useEffect, createRef, useRef } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import CycleService from "../services/CycleService";
+import AlertMsg from "../components/AlertMsg";
 
 const EditCurrentCycle = () => {
   const editCycleForm = useRef(null);
   const [cycle, setcycle] = useState({});
+
+  const [alertOpen, setalertOpen] = useState(false);
+  const [alertMsg, setalertMsg] = useState("");
+  const popUpAlert = (message) => {
+    setalertMsg(message);
+    setalertOpen(true);
+    setTimeout(() => {
+      setalertOpen(false);
+    }, 1000);
+  };
 
   useEffect(() => {
     if (!editCycleForm) return;
@@ -37,9 +48,13 @@ const EditCurrentCycle = () => {
     CycleService.editCurrent({ id, name, startDate, endDate })
       .then((res) => {
         console.log("success ==> ", res.data);
-        alert("done");
+        // alert("done");
+        popUpAlert("Done");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        popUpAlert("Something Went Wrong");
+      });
   };
   return (
     <div className="container my-4">
@@ -64,7 +79,13 @@ const EditCurrentCycle = () => {
 
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label className="font-weight-bold">Name</Form.Label>
-            <Form.Control id="name" type="name" placeholder="" name="name" />
+            <Form.Control
+              id="name"
+              type="name"
+              placeholder=""
+              name="name"
+              required
+            />
           </Form.Group>
           <Row>
             <Col>
@@ -76,6 +97,7 @@ const EditCurrentCycle = () => {
                 className="mb-2"
                 type="date"
                 name="start_date"
+                required
               />
             </Col>
           </Row>
@@ -84,7 +106,7 @@ const EditCurrentCycle = () => {
               <Form.Label className="font-weight-bold">Ends on</Form.Label>
             </Col>
             <Col xs={7}>
-              <Form.Control id="endDate" type="date" name="end_date" />
+              <Form.Control id="endDate" type="date" name="end_date" required />
             </Col>
           </Row>
           <div
@@ -98,6 +120,7 @@ const EditCurrentCycle = () => {
           </div>
         </Form>
       </div>
+      <AlertMsg open={alertOpen} setOpen={setalertOpen} msg={alertMsg} />
     </div>
   );
 };

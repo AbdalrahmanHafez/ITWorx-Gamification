@@ -36,11 +36,12 @@ const AddActivitiy = () => {
               type="name"
               placeholder="Interview Employees"
               name="name"
+              required
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
             <Form.Label>Description</Form.Label>
-            <Form.Control as="textarea" rows={3} name="description" />
+            <Form.Control as="textarea" rows={3} name="description" required />
           </Form.Group>
           <Row className="g-3">
             <Col xs={10}>
@@ -55,13 +56,14 @@ const AddActivitiy = () => {
                   type="name"
                   placeholder="ex : 300"
                   name="points"
+                  required
                 />
               </Form.Group>
             </Col>
             <Col md>
               <Form.Group className="mb-3">
                 <Form.Label className="font-weight-bold pe-2">Type</Form.Label>
-                <select name="isDeveloper" title="isDeveloper">
+                <select name="isDeveloper" title="isDeveloper" required>
                   <option value="developer">Developer</option>
                   <option value="nonDeveloper">Non Developer</option>
                 </select>
@@ -83,7 +85,12 @@ const AddActivitiy = () => {
               <Form.Label className="font-weight-bold">Starts on</Form.Label>
             </Col>
             <Col xs={7}>
-              <Form.Control className="mb-2" type="date" name="start_date" />
+              <Form.Control
+                className="mb-2"
+                type="date"
+                name="start_date"
+                required
+              />
             </Col>
           </Row>
           <Row>
@@ -91,7 +98,7 @@ const AddActivitiy = () => {
               <Form.Label className="font-weight-bold">Ends on</Form.Label>
             </Col>
             <Col xs={7}>
-              <Form.Control type="date" name="end_date" />
+              <Form.Control type="date" name="end_date" required />
             </Col>
           </Row>
           <div

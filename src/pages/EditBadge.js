@@ -9,6 +9,7 @@ import {
   Col,
 } from "react-bootstrap";
 import BadgeService from "../services/BadgeService";
+import AlertMsg from "../components/AlertMsg";
 
 const EditBadge = () => {
   //  Name, Description, Type, Points Needed, Enabled
@@ -17,6 +18,16 @@ const EditBadge = () => {
   const [selectedBadgeName, setSelectedBadgeName] = useState("Select Badge");
   const [badges, setbadges] = useState([]);
   const editBadgeForm = createRef();
+
+  const [alertOpen, setalertOpen] = useState(false);
+  const [alertMsg, setalertMsg] = useState("");
+  const popUpAlert = (message) => {
+    setalertMsg(message);
+    setalertOpen(true);
+    setTimeout(() => {
+      setalertOpen(false);
+    }, 1000);
+  };
 
   useEffect(() => {
     BadgeService.adminGetBadges()
@@ -69,9 +80,13 @@ const EditBadge = () => {
     BadgeService.editBadge({ id, name, desc, points, type, disabled })
       .then((res) => {
         console.log("success ==> ", res.data);
-        alert("done");
+        // alert("done");
+        popUpAlert("Done");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        popUpAlert("Something Went Wrong");
+      });
   };
 
   return (
@@ -118,6 +133,7 @@ const EditBadge = () => {
                   id="badgeId"
                   name="badgeId"
                   value={selectedBadgeId}
+                  required
                 />
               </Form.Group>
             </Col>
@@ -125,7 +141,13 @@ const EditBadge = () => {
           <div className={isFormHidden ? "hidden" : ""}>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label className="font-weight-bold">Name</Form.Label>
-              <Form.Control id="name" type="name" placeholder="" name="name" />
+              <Form.Control
+                id="name"
+                type="name"
+                placeholder=""
+                name="name"
+                required
+              />
             </Form.Group>
             <Form.Group
               className="mb-3"
@@ -137,6 +159,7 @@ const EditBadge = () => {
                 as="textarea"
                 rows={3}
                 name="description"
+                required
               />
             </Form.Group>
             <Row className="g-3">
@@ -153,6 +176,7 @@ const EditBadge = () => {
                     type="name"
                     placeholder="ex : 300"
                     name="pointsNeeded"
+                    required
                   />
                 </Form.Group>
               </Col>
@@ -161,7 +185,7 @@ const EditBadge = () => {
                   <Form.Label className="font-weight-bold pe-2">
                     Type
                   </Form.Label>
-                  <select name="isDeveloper" id="type">
+                  <select name="isDeveloper" id="type" required>
                     <option value="developer">Developer</option>
                     <option value="nonDeveloper">Non Developer</option>
                   </select>
@@ -174,6 +198,7 @@ const EditBadge = () => {
                     id="disabled"
                     label={`Disabled`}
                     name="disabled"
+                    required
                   />
                 </Form.Group>
               </Col>
@@ -190,6 +215,7 @@ const EditBadge = () => {
           </div>
         </Form>
       </div>
+      <AlertMsg open={alertOpen} setOpen={setalertOpen} msg={alertMsg} />
     </div>
   );
 };

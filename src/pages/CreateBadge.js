@@ -9,9 +9,19 @@ import {
   Col,
 } from "react-bootstrap";
 import BadgeService from "../services/BadgeService";
+import AlertMsg from "../components/AlertMsg";
 
 const CreateBadge = () => {
   //  Name, Description, Type, Points Needed, Enabled
+  const [alertOpen, setalertOpen] = useState(false);
+  const [alertMsg, setalertMsg] = useState("");
+  const popUpAlert = (message) => {
+    setalertMsg(message);
+    setalertOpen(true);
+    setTimeout(() => {
+      setalertOpen(false);
+    }, 1000);
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     // console.log(e);
@@ -25,9 +35,13 @@ const CreateBadge = () => {
     BadgeService.Create({ name, desc, points, type, disabled })
       .then((res) => {
         console.log("success ==> ", res.data);
-        alert("done");
+        // alert("done");
+        popUpAlert("Done");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        popUpAlert("Something Went Wrong");
+      });
 
     // e.BadgeService;
   };
@@ -55,11 +69,18 @@ const CreateBadge = () => {
               placeholder="Interview Employees"
               name="name"
               id="name"
+              required
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
             <Form.Label>Description</Form.Label>
-            <Form.Control id="desc" as="textarea" rows={3} name="description" />
+            <Form.Control
+              id="desc"
+              as="textarea"
+              rows={3}
+              name="description"
+              required
+            />
           </Form.Group>
           <Row className="g-3">
             <Col xs={10}>
@@ -75,13 +96,14 @@ const CreateBadge = () => {
                   type="name"
                   placeholder="ex : 300"
                   name="pointsNeeded"
+                  required
                 />
               </Form.Group>
             </Col>
             <Col md>
               <Form.Group className="mb-3">
                 <Form.Label className="font-weight-bold pe-2">Type</Form.Label>
-                <select name="isDeveloper" id="type">
+                <select name="isDeveloper" id="type" required>
                   <option value="developer">Developer</option>
                   <option value="nonDeveloper">Non Developer</option>
                 </select>
@@ -94,6 +116,7 @@ const CreateBadge = () => {
                   id="disabled"
                   label={`Disabled`}
                   name="disabled"
+                  required
                 />
               </Form.Group>
             </Col>
@@ -108,6 +131,7 @@ const CreateBadge = () => {
             </Button>
           </div>
         </Form>
+        <AlertMsg open={alertOpen} setOpen={setalertOpen} msg={alertMsg} />
       </div>
     </div>
   );

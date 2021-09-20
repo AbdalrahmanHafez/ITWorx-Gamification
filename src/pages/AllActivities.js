@@ -10,33 +10,33 @@ const AllActivities = () => {
     {
       field: "name",
       headerName: "Name",
-      width: 225,
+      flex: 1.25,
     },
     {
       field: "description",
       headerName: "Description",
-      width: 400,
+      flex: 3.5,
     },
     {
       field: "points",
       headerName: "Points",
-      width: 120,
+      flex: 0.9,
     },
     {
       field: "virtualRecognition",
       headerName: "VR",
-      width: 90,
+      flex: 0.8,
     },
     {
       field: "forDevelopers",
       headerName: "Devs-Only",
-      width: 90,
+      flex: 1,
     },
     {
       field: "",
       headerName: "More info",
       sortable: false,
-      width: 100,
+      flex: 1,
       disableClickEventBubbling: true,
       renderCell: (params) => {
         return (
