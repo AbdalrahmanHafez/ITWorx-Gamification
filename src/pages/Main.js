@@ -18,7 +18,7 @@ import PageNotFound from "./PageNotFound";
 import EditCurrentCycle from "./EditCurrentCycle";
 import ParticipatingEmployees from "./ParticipatingEmployees";
 import AddNewCycle from "./AddNewCycle";
-import leaderBoardDeveloper from "./leaderBoardDeveloper";
+import LeaderBoardDeveloper from "./LeaderBoardDeveloper";
 
 import Login from "./Login";
 import Navbar from "../components/Navbar";
@@ -82,8 +82,8 @@ const Main = () => {
           />
           <Route
             exact
-            path="/leaderBoardDeveloper"
-            component={leaderBoardDeveloper}
+            path="/LeaderBoardDeveloper"
+            component={LeaderBoardDeveloper}
           />
           <Route
             exact

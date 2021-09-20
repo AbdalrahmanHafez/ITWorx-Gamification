@@ -5,7 +5,7 @@ import EmployeeService from "../services/EmployeeService";
 import Table from "../components/Table";
 import { ExportCSV } from "../components/ExportCSV";
 
-const leaderBoardDeveloper = () => {
+const LeaderBoardDeveloper = (props) => {
   const [data, setdata] = useState({});
 
   const columns = [
@@ -33,25 +33,35 @@ const leaderBoardDeveloper = () => {
       return result;
     });
   };
-  return (
-    <>
-      <div
-        style={{
-          width: "50%",
-          margin: "auto",
-        }}
-      >
-        <Table
-          name="Developers Leader Board"
-          columns={columns}
-          onMount={setRows}
-        />
-      </div>
-      <div className="pb-5 me-3" style={{ textAlign: "right" }}>
-        <ExportCSV csvData={data} fileName={fileName} />
-      </div>
-    </>
-  );
+
+  if (props.onlyTable)
+    return (
+      <Table
+        name="Developers Leader Board"
+        columns={columns}
+        onMount={setRows}
+      />
+    );
+  else
+    return (
+      <>
+        <div
+          style={{
+            width: "50%",
+            margin: "auto",
+          }}
+        >
+          <Table
+            name="Developers Leader Board"
+            columns={columns}
+            onMount={setRows}
+          />
+        </div>
+        <div className="pb-5 me-3" style={{ textAlign: "right" }}>
+          <ExportCSV csvData={data} fileName={fileName} />
+        </div>
+      </>
+    );
 };
 
-export default leaderBoardDeveloper;
+export default LeaderBoardDeveloper;

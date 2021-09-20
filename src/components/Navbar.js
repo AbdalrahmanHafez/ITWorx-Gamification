@@ -124,7 +124,7 @@ const Navbar = () => {
                         Non Developers Ranking
                       </NavDropdown.Item>
 
-                      <NavDropdown.Item as={Link} to="/leaderBoardDevelopers">
+                      <NavDropdown.Item as={Link} to="/LeaderBoardDeveloper">
                         Developers Ranking
                       </NavDropdown.Item>
                     </NavDropdown>
