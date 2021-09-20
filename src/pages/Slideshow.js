@@ -2,8 +2,63 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Carousel, Button } from "react-bootstrap";
 import { NavLink, Link, Redirect, useHistory } from "react-router-dom";
+import Table from "../components/Table";
 
 const Slideshow = () => {
+  let newActivities = [];
+  const columns = [
+    {
+      field: "name",
+      headerName: "Name",
+      width: 225,
+    },
+    {
+      field: "description",
+      headerName: "Description",
+      width: 250,
+    },
+    {
+      field: "points",
+      headerName: "Points",
+      width: 120,
+    },
+    {
+      field: "",
+      headerName: "More info",
+      sortable: false,
+      width: 100,
+      disableClickEventBubbling: true,
+      renderCell: (params) => {
+        return (
+          <Link
+            to={{
+              pathname: "/ActivityView/" + params.row.id,
+              allActivities: newActivities,
+            }}
+          >
+            More info
+          </Link>
+        );
+      },
+    },
+  ];
+
+  const setRows = async () => {
+    return ActivitieService.getNew().then((res) => {
+      newActivities = res.data;
+      const result = res.data.map((obj, i) => ({
+        id: obj.id,
+        name: obj.name,
+        description: obj.description,
+        points: obj.totalPoints,
+        moreinfo: <Link href="/">Link</Link>,
+      }));
+      console.log("result", result);
+      console.log(newActivities);
+      return result;
+    });
+  };
+
   return (
     <div
       className="Slideshow"
@@ -11,64 +66,23 @@ const Slideshow = () => {
     >
       <Carousel variant="dark" pause="hover" nextLabel="" prevLabel="">
         <Carousel.Item>
-          <div style={{ height: "60vh" }}></div>
+          <div style={{ height: "150vh" }}></div>
           <Carousel.Caption>
-            <div
-              class="card"
-              style={{
-                width: "auto",
-                filter: "drop-shadow(0 0 1rem #000000)",
-              }}
+            <p class="card-text">
+              <Table
+                name="New Activities"
+                columns={columns}
+                onMount={setRows}
+              />
+              ;
+            </p>
+            <Link
+              to="/AllActivities"
+              class="btn btn-primary"
+              style={{ backgroundColor: "#3a73b5" }}
             >
-              <div class="card-body">
-                <p class="card-text">
-                  <h1 style={{ color: "black" }}>New Activities</h1>
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Points</th>
-                        <th scope="col"></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">Interview</th>
-                        <td>Interview 5 New Employees</td>
-                        <td>50</td>
-                        <td>
-                          <Link to="/ActivityView/1">more info</Link>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">New Theme</th>
-                        <td>Create New Theme for the company website</td>
-                        <td>46</td>
-                        <td>
-                          <Link to="">more info</Link>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Fix Bugs</th>
-                        <td>these damn bugs</td>
-                        <td>20</td>
-                        <td>
-                          <Link to="">more info</Link>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>{" "}
-                </p>
-                <Link
-                  to="/AllActivities"
-                  class="btn btn-primary"
-                  style={{ backgroundColor: "#3a73b5" }}
-                >
-                  View All Activities
-                </Link>
-              </div>
-            </div>
+              View All Activities
+            </Link>
           </Carousel.Caption>
         </Carousel.Item>
 

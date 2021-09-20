@@ -121,7 +121,11 @@ const Navbar = () => {
                       </NavDropdown.Item>
 
                       <NavDropdown.Item as={Link} to="/EmployeeRanking">
-                        Employee Ranking
+                        Non Developers Ranking
+                      </NavDropdown.Item>
+
+                      <NavDropdown.Item as={Link} to="/DevelopersLeaderBoards">
+                        Developers Ranking
                       </NavDropdown.Item>
                     </NavDropdown>
                     <NavDropdown

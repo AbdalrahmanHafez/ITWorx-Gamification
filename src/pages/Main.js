@@ -18,6 +18,7 @@ import PageNotFound from "./PageNotFound";
 import EditCurrentCycle from "./EditCurrentCycle";
 import ParticipatingEmployees from "./ParticipatingEmployees";
 import AddNewCycle from "./AddNewCycle";
+import DevelopersleaderBoards from "./DevelopersLeaderBoards";
 
 import Login from "./Login";
 import Navbar from "../components/Navbar";
@@ -77,6 +78,11 @@ const Main = () => {
             exact
             path="/LeaderBoardDepartment"
             component={LeaderBoardDepartment}
+          />
+          <Route
+            exact
+            path="/DevelopersleaderBoards"
+            component={DevelopersleaderBoards}
           />
           <Route exact path="/EmployeeRanking" component={EmployeeRanking} />
           <Route exact path="/TestPage" component={TestPage} />

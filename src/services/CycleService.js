@@ -16,6 +16,10 @@ class CycleService {
   editCurrent(data) {
     return http.post("/cycle/editCurrent", data);
   }
+
+  addNew(data) {
+    return http.post("/cycle/addNew", data);
+  }
 }
 
 export default new CycleService();

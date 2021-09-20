@@ -6,7 +6,7 @@ class EmployeeService {
   }
 
   getDevelopersRanking() {
-    return http.get("/employee/DevelopersRanking");
+    return http.get("/employee/DevelopersLeaderBoards");
   }
 
   getPoints() {

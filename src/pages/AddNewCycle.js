@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useRef } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import Table from "../components/Table";
@@ -6,6 +6,23 @@ import CycleService from "../services/CycleService";
 
 const AddNewCycle = () => {
   // name, adminid, startDate, endDate
+  const addCycleForm = useRef(null);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("submitting");
+    const name = addCycleForm.current.name.value;
+    const startDate = addCycleForm.current.startDate.value;
+    const endDate = addCycleForm.current.endDate.value;
+
+    CycleService.addNew({ name, startDate, endDate })
+      .then((res) => {
+        console.log("success ==> ", res.data);
+        alert("done");
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <>
       <div className="container my-4">
@@ -20,14 +37,14 @@ const AddNewCycle = () => {
         >
           <h1 className="m-5">Add New Cycle</h1>
           <Form
-            method="post"
-            action="http://localhost:8080/AddNewCycle"
             className="container px-5 mb-4"
             style={{ fontWeight: "bold", fontSize: "100%" }}
+            onSubmit={handleSubmit}
+            ref={addCycleForm}
           >
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label className="font-weight-bold">Name</Form.Label>
-              <Form.Control type="name" placeholder="" name="name" />
+              <Form.Control id="name" type="name" placeholder="" name="name" />
             </Form.Group>
 
             <Row>
@@ -35,7 +52,12 @@ const AddNewCycle = () => {
                 <Form.Label className="font-weight-bold">Starts on</Form.Label>
               </Col>
               <Col xs={7}>
-                <Form.Control className="mb-2" type="date" name="start_date" />
+                <Form.Control
+                  id="startDate"
+                  className="mb-2"
+                  type="date"
+                  name="start_date"
+                />
               </Col>
             </Row>
             <Row>
@@ -43,7 +65,7 @@ const AddNewCycle = () => {
                 <Form.Label className="font-weight-bold">Ends on</Form.Label>
               </Col>
               <Col xs={7}>
-                <Form.Control type="date" name="end_date" />
+                <Form.Control id="endDate" type="date" name="end_date" />
               </Col>
             </Row>
             <div
@@ -84,7 +106,7 @@ const PlannedCycles = () => {
 
   const setRows = async () => {
     return CycleService.getPlanned().then((res) => {
-      cycles = res.data;
+      console.log("res.data", res.data);
       const result = res.data.map((obj, i) => ({
         id: obj.id,
         name: obj.name,
@@ -92,7 +114,6 @@ const PlannedCycles = () => {
         end_date: obj.endDate,
       }));
       console.log("result", result);
-      console.log(cycles);
       return result;
     });
   };

@@ -42,7 +42,7 @@ const EmployeeRanking = () => {
         }}
       >
         <Table
-          name="Employee Leader Board"
+          name="Non Developers Leader Board"
           columns={columns}
           onMount={setRows}
         />
