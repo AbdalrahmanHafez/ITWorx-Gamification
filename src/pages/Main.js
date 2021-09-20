@@ -23,12 +23,14 @@ import LeaderBoardDeveloper from "./LeaderBoardDeveloper";
 import Login from "./Login";
 import Navbar from "../components/Navbar";
 import PrivateRoute from "../components/PrivateRoute";
+
 import { UserContext } from "../Store";
 import Cookies from "js-cookie";
 import jwt from "jsonwebtoken";
 
 // Admin
 import AddActivity from "./AddActivity";
+import AdminRoute from "../components/AdminRoute";
 
 const Main = () => {
   const [user, setUser] = useContext(UserContext);
@@ -55,51 +57,62 @@ const Main = () => {
         {/* <Route exact path="/*" component={Navbar} /> */}
         <Switch>
           {/* The Switch decides which component to show based on the current URL.*/}
-          <Route exact path="/" component={Slideshow} />
+          <PrivateRoute exact path="/" component={Slideshow} />
           <Route exact path="/Login" component={Login} />;
-          <Route exact path="/AllActivities" component={AllActivities} />
-          <Route exact path="/NewActivities" component={NewActivities} />
-          <Route exact path="/YourActivities" component={YourActivities} />
-          <Route
+          <PrivateRoute exact path="/AllActivities" component={AllActivities} />
+          <PrivateRoute exact path="/NewActivities" component={NewActivities} />
+          <PrivateRoute
+            exact
+            path="/YourActivities"
+            component={YourActivities}
+          />
+          <PrivateRoute
             exact
             path="/ActivityView/:activityId"
             component={ActivityView}
           />
-          <Route exact path="/Departments" component={Departments} />
-          <Route exact path="/ReviewActivity" component={ReviewActivity} />
-          <Route exact path="/AddActivity" component={AddActivity} />
-          <Route exact path="/EditBadge" component={EditBadge} />
-          <Route exact path="/CreateBadge" component={CreateBadge} />
-          <Route
+          <PrivateRoute exact path="/Departments" component={Departments} />
+          <PrivateRoute
+            exact
+            path="/ReviewActivity"
+            component={ReviewActivity}
+          />
+          <AdminRoute exact path="/AddActivity" component={AddActivity} />
+          <AdminRoute exact path="/EditBadge" component={EditBadge} />
+          <AdminRoute exact path="/CreateBadge" component={CreateBadge} />
+          <PrivateRoute
             exact
             path="/LeaderBoardPractice"
             component={LeaderBoardPractice}
           />
-          <Route
+          <PrivateRoute
             exact
             path="/LeaderBoardDepartment"
             component={LeaderBoardDepartment}
           />
-          <Route
+          <PrivateRoute
             exact
             path="/LeaderBoardDeveloper"
             component={LeaderBoardDeveloper}
           />
-          <Route
+          <PrivateRoute
             exact
             path="/LeaderBoardNonDeveloper"
             component={LeaderBoardNonDeveloper}
           />
-          <Route exact path="/TestPage" component={TestPage} />
-          <Route exact path="/EditCurrentCycle" component={EditCurrentCycle} />
-          <Route exact path="/AddNewCycle" component={AddNewCycle} />
+          <AdminRoute exact path="/TestPage" component={TestPage} />
+          <AdminRoute
+            exact
+            path="/EditCurrentCycle"
+            component={EditCurrentCycle}
+          />
+          <AdminRoute exact path="/AddNewCycle" component={AddNewCycle} />
           <PrivateRoute
             exact
             path="/ParticipatingEmployees"
             component={ParticipatingEmployees}
           />
-          <PrivateRoute path="/AddActivity" component={AddActivity} />
-          <Route exact path="/Badges" component={Badges} />
+          <PrivateRoute exact path="/Badges" component={Badges} />
           <Route path="*">
             <PageNotFound />
           </Route>

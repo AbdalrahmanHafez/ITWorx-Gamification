@@ -15,7 +15,7 @@ const AllActivities = () => {
     {
       field: "description",
       headerName: "Description",
-      width: 500,
+      width: 400,
     },
     {
       field: "points",
@@ -25,7 +25,12 @@ const AllActivities = () => {
     {
       field: "virtualRecognition",
       headerName: "VR",
-      width: 120,
+      width: 90,
+    },
+    {
+      field: "forDevelopers",
+      headerName: "Devs-Only",
+      width: 90,
     },
     {
       field: "",
@@ -57,7 +62,8 @@ const AllActivities = () => {
         name: obj.name,
         description: obj.description,
         points: obj.totalPoints,
-        virtualRecognition: obj.virtualRecognition,
+        virtualRecognition: obj.virtualRecognition ? "yes" : "no",
+        forDevelopers: obj.isDeveloper ? "yes" : "no",
         moreinfo: <Link href="/">Link</Link>,
       }));
       console.log("result", result);
