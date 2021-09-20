@@ -1,12 +1,12 @@
 import http from "./http-common";
 
 class EmployeeService {
-  getRanking() {
-    return http.get("/employee/EmployeeRanking");
+  getNonDeveloperRanking() {
+    return http.get("/employee/NonDevelopersLeaderBoard");
   }
 
   getDevelopersRanking() {
-    return http.get("/employee/DevelopersLeaderBoards");
+    return http.get("/employee/DevelopersLeaderBoard");
   }
 
   getPoints() {

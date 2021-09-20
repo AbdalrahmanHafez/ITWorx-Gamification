@@ -10,7 +10,7 @@ import EmployeeService from "../services/EmployeeService";
 
 const Navbar = () => {
   const [user, setUser] = useContext(UserContext);
-  const { isAdmin } = user;
+  const { isAdmin, isDeveloper } = user;
   const getPoints = () => {
     return EmployeeService.getPoints().then((response) => {
       console.log("Success ========>", response.data);
@@ -120,11 +120,11 @@ const Navbar = () => {
                         Practice Leader Board
                       </NavDropdown.Item>
 
-                      <NavDropdown.Item as={Link} to="/EmployeeRanking">
+                      <NavDropdown.Item as={Link} to="/LeaderBoardNonDeveloper">
                         Non Developers Ranking
                       </NavDropdown.Item>
 
-                      <NavDropdown.Item as={Link} to="/DevelopersLeaderBoards">
+                      <NavDropdown.Item as={Link} to="/leaderBoardDevelopers">
                         Developers Ranking
                       </NavDropdown.Item>
                     </NavDropdown>
@@ -179,10 +179,18 @@ const Navbar = () => {
                       <NavDropdown.Item as={Link} to="/LeaderBoardPractice">
                         Practice Leader Board
                       </NavDropdown.Item>
-
-                      <NavDropdown.Item as={Link} to="/EmployeeRanking">
-                        Employee Ranking
-                      </NavDropdown.Item>
+                      {isDeveloper ? (
+                        <NavDropdown.Item as={Link} to="/LeaderBoardDeveloper">
+                          Developer Ranking
+                        </NavDropdown.Item>
+                      ) : (
+                        <NavDropdown.Item
+                          as={Link}
+                          to="/LeaderBoardNonDeveloper"
+                        >
+                          NonDeveloper Ranking
+                        </NavDropdown.Item>
+                      )}
                     </NavDropdown>
                     <li className="nav-item">
                       <Link className="link nav-link active" to="/Badges">

@@ -2,33 +2,10 @@ import http from "./http-common";
 
 class DepartmentService {
   getAll(data) {
-    return http.post("/EmployeeDepartments", data);
+    return http.post("/department/EmployeeDepartments", data);
   }
   getRanking() {
-    return http.get("/DepartmentRanking");
-  }
-  get(id) {
-    return http.get(`/employee/${id}`);
-  }
-
-  create(data) {
-    return http.post("/employee", data);
-  }
-
-  update(id, data) {
-    return http.put(`/employee/${id}`, data);
-  }
-
-  delete(id) {
-    return http.delete(`/employee/${id}`);
-  }
-
-  deleteAll() {
-    return http.delete(`/employee`);
-  }
-
-  findByTitle(title) {
-    return http.get(`/employee?title=${title}`);
+    return http.get("/department/DepartmentRanking");
   }
 }
 

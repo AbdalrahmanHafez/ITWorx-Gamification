@@ -9,7 +9,7 @@ import EditBadge from "./EditBadge";
 import CreateBadge from "./CreateBadge";
 import ReviewActivity from "./ReviewActivity";
 import Departments from "./Departments";
-import EmployeeRanking from "./EmployeeRanking";
+import LeaderBoardNonDeveloper from "./LeaderBoardNonDeveloper";
 import LeaderBoardDepartment from "./LeaderBoardDepartment";
 import LeaderBoardPractice from "./LeaderBoardPractice";
 import Badges from "./Badges";
@@ -18,7 +18,7 @@ import PageNotFound from "./PageNotFound";
 import EditCurrentCycle from "./EditCurrentCycle";
 import ParticipatingEmployees from "./ParticipatingEmployees";
 import AddNewCycle from "./AddNewCycle";
-import DevelopersleaderBoards from "./DevelopersLeaderBoards";
+import leaderBoardDeveloper from "./leaderBoardDeveloper";
 
 import Login from "./Login";
 import Navbar from "../components/Navbar";
@@ -40,11 +40,12 @@ const Main = () => {
   } else {
     // Don't really know why but this works
     authcookie = authcookie.slice(2).split(".").slice(0, 3).join(".");
-    const { isAdmin } = jwt.verify(authcookie, "gutreohwgcrewp");
+    const { isAdmin, isDeveloper } = jwt.verify(authcookie, "gutreohwgcrewp");
 
     // setUser({ ...user, authed: true, isAdmin: isAdmin });
     user.authed = true;
     user.isAdmin = isAdmin;
+    user.isDeveloper = isDeveloper;
   }
 
   return (
@@ -81,10 +82,14 @@ const Main = () => {
           />
           <Route
             exact
-            path="/DevelopersleaderBoards"
-            component={DevelopersleaderBoards}
+            path="/leaderBoardDeveloper"
+            component={leaderBoardDeveloper}
           />
-          <Route exact path="/EmployeeRanking" component={EmployeeRanking} />
+          <Route
+            exact
+            path="/LeaderBoardNonDeveloper"
+            component={LeaderBoardNonDeveloper}
+          />
           <Route exact path="/TestPage" component={TestPage} />
           <Route exact path="/EditCurrentCycle" component={EditCurrentCycle} />
           <Route exact path="/AddNewCycle" component={AddNewCycle} />

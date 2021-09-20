@@ -4,6 +4,7 @@ const initialState = {
   isAdmin: false,
   points: 0,
   practiceName: "",
+  isDeveloper: false,
 };
 
 export const UserContext = React.createContext();

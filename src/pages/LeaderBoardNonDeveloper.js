@@ -5,7 +5,7 @@ import EmployeeService from "../services/EmployeeService";
 import Table from "../components/Table";
 import { ExportCSV } from "../components/ExportCSV";
 
-const DevelopersLeaderBoards = () => {
+const LeaderBoardNonDeveloper = () => {
   const [data, setdata] = useState({});
 
   const columns = [
@@ -22,7 +22,7 @@ const DevelopersLeaderBoards = () => {
   ];
   const fileName = "Test";
   const setRows = async () => {
-    return EmployeeService.getDevelopersRanking().then((res) => {
+    return EmployeeService.getNonDeveloperRanking().then((res) => {
       const result = res.data.map((obj, i) => ({
         id: i,
         name: obj.name,
@@ -42,7 +42,7 @@ const DevelopersLeaderBoards = () => {
         }}
       >
         <Table
-          name="Developers Leader Board"
+          name="Non Developers Leader Board"
           columns={columns}
           onMount={setRows}
         />
@@ -54,4 +54,4 @@ const DevelopersLeaderBoards = () => {
   );
 };
 
-export default DevelopersLeaderBoards;
+export default LeaderBoardNonDeveloper;
