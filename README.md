@@ -4,7 +4,7 @@
 
 - REACT_APP_NODE_Server_URL= 
 	_for example: http://localhost:8080_
-
+---
 * Logout button added. when clicking on profile icon
 * Participating Employee table fixed
 * Admin review activity fixed
