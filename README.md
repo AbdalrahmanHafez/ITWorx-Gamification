@@ -11,5 +11,6 @@
 
 ### .env file Location: should be placed along side package.json file
 
+### The Database Creation Script is provided Here under the name create-db.sql, you may need to excute each command separetly, instead of running the whole sql file.
 
 ### When npm install finishes, do npm start
