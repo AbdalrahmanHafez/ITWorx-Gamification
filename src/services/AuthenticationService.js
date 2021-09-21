@@ -3,7 +3,7 @@ import http from "./http-common";
 class AuthenticationService {
   signin(email, password, isadminlogin) {
     return http.post(
-      "http://localhost:8080/login",
+      process.env.REACT_APP_NODE_Server_URL+"/login",
       {
         email: email,
         password: password,
@@ -15,7 +15,7 @@ class AuthenticationService {
 
   logout() {
     return http.post(
-      "http://localhost:8080/logout",
+      process.env.REACT_APP_NODE_Server_URL+"/logout",
       {},
       { withCredentials: true, "Access-Control-Allow-Credentials": true }
     );

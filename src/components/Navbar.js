@@ -295,7 +295,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        {!isAdmin && <ProfilePic points={user.points} onClick={handleClick} />}
+        <ProfilePic points={user.points} onClick={handleClick} />
         {!isAdmin && <span>{user.practiceName + " Practice"}</span>}
         {isAdmin && <span>Admin</span>}
       </nav>

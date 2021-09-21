@@ -16,9 +16,9 @@ const TestPage = () => {
 
   return (
     <>
-      <h1>{JSON.stringify(user)}</h1>
-      <button onClick={() => testButton(setUser)}> test</button>
-      <AlertMsg open={alertOpen} setOpen={setalertOpen} />
+      <h1>{"hello"}</h1>
+      {/* <button onClick={() => testButton(setUser)}> test</button>
+      <AlertMsg open={alertOpen} setOpen={setalertOpen} /> */}
     </>
   );
 };

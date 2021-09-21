@@ -26,7 +26,7 @@ import AlertMsg from "../components/AlertMsg";
 const loginHandler = () => {
   axios
     .post(
-      "http://localhost:8080/login",
+      process.env.REACT_APP_NODE_Server_URL+"/login",
       {
         email: "ahmed_khalid@gmail.com",
         password: "pass123",
@@ -42,7 +42,7 @@ const loginHandler = () => {
 const loginAdminHandler = () => {
   axios
     .post(
-      "http://localhost:8080/login",
+      process.env.REACT_APP_NODE_Server_URL+"/login",
       {
         email: "admin1@gmail.com",
         password: "admin123",
@@ -57,7 +57,7 @@ const loginAdminHandler = () => {
 };
 const getAdminHandler = () => {
   axios
-    .get("http://localhost:8080/db", { withCredentials: true })
+    .get(process.env.REACT_APP_NODE_Server_URL+"/db", { withCredentials: true })
     .then((response) => console.log("Success ========>", response))
     .catch((error) => {
       console.log("Error ========>", error);
@@ -66,7 +66,7 @@ const getAdminHandler = () => {
 const logoutHandler = () => {
   axios
     .post(
-      "http://localhost:8080/logout",
+      process.env.REACT_APP_NODE_Server_URL+"/logout",
       {},
       { withCredentials: true, "Access-Control-Allow-Credentials": true }
     )
@@ -226,7 +226,7 @@ function Login(props) {
                   align="center"
                 >
                   {"Copyright © "}
-                  <Link color="inherit" href="http://localhost:3000/">
+                  <Link color="inherit" href="/">
                     ITWorx
                   </Link>{" "}
                   {new Date().getFullYear()}

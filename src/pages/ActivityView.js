@@ -116,7 +116,7 @@ const ActivityView = (props) => {
             </ListGroup>
             <Form
               className="container px-5 mb-4 "
-              action="http://localhost:8080/EmployeeSubscribeToActivity"
+              action={process.env.REACT_APP_NODE_Server_URL + '/EmployeeSubscribeToActivity'}
               method="POST"
               style={{ fontWeight: "bold", fontSize: "110%" }}
             >

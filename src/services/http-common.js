@@ -4,7 +4,7 @@ import { UserContext } from "../Store";
 
 const axInstance = axios.create({
   // baseURL: "https://0mtu5.sse.codesandbox.io/",
-  baseURL: "http://localhost:8080/",
+  baseURL: process.env.REACT_APP_NODE_Server_URL+"/",
   headers: {
     "Content-type": "application/json",
   },

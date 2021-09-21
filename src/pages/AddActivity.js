@@ -25,7 +25,7 @@ const AddActivitiy = () => {
       >
         <h1 className="m-5">Add New Activity</h1>
         <Form
-          action="http://localhost:8080/AddActivity"
+          action={process.env.REACT_APP_NODE_Server_URL+"/AddActivity"}
           method="POST"
           className="container px-5 mb-4 "
           style={{ fontWeight: "bold", fontSize: "110%" }}
