@@ -7,7 +7,7 @@ import profile_pic from "../Images/profile_pic.png";
 const ProfilePic = (props) => {
   return (
     <>
-      <div className="Profile-Contailer">
+      <div className="Profile-Contailer" onClick={props.onClick}>
         <a href="/#Profile">
           <img className="ProfilePic ml-5" src={profile_pic} alt="" />
         </a>

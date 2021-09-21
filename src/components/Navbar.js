@@ -1,16 +1,107 @@
 import React, { useContext, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { NavDropdown, MenuItem } from "react-bootstrap";
+import { NavDropdown } from "react-bootstrap";
 import ProfilePic from "./ProfilePic";
 import { NavLink, Link, Redirect, useHistory } from "react-router-dom";
 import { UserContext } from "../Store";
 
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemAvatar from "@mui/material/ListItemAvatar";
+import ListItemText from "@mui/material/ListItemText";
+import DialogTitle from "@mui/material/DialogTitle";
+import PersonIcon from "@mui/icons-material/Person";
+
+import Box from "@mui/material/Box";
+import Avatar from "@mui/material/Avatar";
+import Menu from "@mui/material/Menu";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import Divider from "@mui/material/Divider";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import Tooltip from "@mui/material/Tooltip";
+import PersonAdd from "@mui/icons-material/PersonAdd";
+import Settings from "@mui/icons-material/Settings";
+import Logout from "@mui/icons-material/Logout";
+import MenuItem from "@mui/material/MenuItem";
+
 import ITWorx_logo from "../Images/ITWorx_logo.png";
 import EmployeeService from "../services/EmployeeService";
+import { makeStyles, Dialog } from "@material-ui/core";
+import AuthenticationService from "../services/AuthenticationService";
+
+function AccountMenu(props) {
+  const { open, setOpen, handleClose, logoutHandler } = props;
+  const openst = Boolean(open);
+
+  return (
+    <React.Fragment>
+      <Menu
+        anchorEl={open}
+        open={openst}
+        onClose={handleClose}
+        onClick={handleClose}
+        PaperProps={{
+          elevation: 0,
+          sx: {
+            overflow: "visible",
+            filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+            mt: 1.5,
+            "& .MuiAvatar-root": {
+              width: 32,
+              height: 32,
+              ml: -0.5,
+              mr: 1,
+            },
+            "&:before": {
+              content: '""',
+              display: "block",
+              position: "absolute",
+              top: 0,
+              right: 14,
+              width: 10,
+              height: 10,
+              bgcolor: "background.paper",
+              transform: "translateY(-50%) rotate(45deg)",
+              zIndex: 0,
+            },
+          },
+        }}
+        transformOrigin={{ horizontal: "right", vertical: "top" }}
+        anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+      >
+        <MenuItem onClick={logoutHandler}>
+          <ListItemIcon>
+            <Logout fontSize="small" />
+          </ListItemIcon>
+          Logout
+        </MenuItem>
+      </Menu>
+    </React.Fragment>
+  );
+}
 
 const Navbar = () => {
   const [user, setUser] = useContext(UserContext);
   const { isAdmin, isDeveloper } = user;
+  const [open, setOpen] = React.useState(null);
+
+  const logoutHandler = () => {
+    AuthenticationService.logout()
+      .then((res) => {
+        console.log("ok loggint out");
+        window.location.href = "/";
+      })
+      .catch((err) => console.log(err));
+  };
+  const handleClick = (event) => {
+    setOpen(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setOpen(null);
+  };
+
   const getPoints = () => {
     return EmployeeService.getPoints().then((response) => {
       console.log("Success ========>", response.data);
@@ -203,10 +294,17 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-        {!isAdmin && <ProfilePic points={user.points} />}
+
+        {!isAdmin && <ProfilePic points={user.points} onClick={handleClick} />}
         {!isAdmin && <span>{user.practiceName + " Practice"}</span>}
         {isAdmin && <span>Admin</span>}
       </nav>
+      <AccountMenu
+        open={open}
+        setOpen={setOpen}
+        handleClose={handleClose}
+        logoutHandler={logoutHandler}
+      />
     </div>
   );
 };

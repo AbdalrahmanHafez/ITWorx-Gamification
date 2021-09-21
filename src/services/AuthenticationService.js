@@ -12,6 +12,14 @@ class AuthenticationService {
       { withCredentials: true, "Access-Control-Allow-Credentials": true }
     );
   }
+
+  logout() {
+    return http.post(
+      "http://localhost:8080/logout",
+      {},
+      { withCredentials: true, "Access-Control-Allow-Credentials": true }
+    );
+  }
 }
 
 export default new AuthenticationService();
